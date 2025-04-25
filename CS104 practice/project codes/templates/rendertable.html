@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logfile analyser</title>
+</head>
+<body style="background-color: black; color: yellow;">
+    <h1>LOGFILE ANALYSIS CREATOR</h1>
+    <nav style="background-color: gray; text-align: left; justify-content: space-between;">
+        <a style="color: white; text-decoration: none;" href='/'>Upload</a>
+        <a style="color: white; text-decoration: none;" href='/viewcsv'>CSV</a>
+        <a style="color: white; text-decoration: none;" href="/viewplot">Plots</a>
+    </nav>
+    <form method="GET">
+        <p>Download the CSV!</p>
+        <input type="submit" name="submit" value="Download">
+    </form>
+    <br><br>
+    <table border="1" style="border-color: white;">
+        <thead>
+            <tr>
+                {% for name in tabledata[0] %}
+                    <th>{{ name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in tabledata[1:] %}
+                <tr>
+                    {% for name in log %}
+                        <td>{{ name }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

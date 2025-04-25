@@ -1,0 +1,1 @@
+s/^[0-9]+[^0-9].{3,3}(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)([0-9]+)$/\2 \1/

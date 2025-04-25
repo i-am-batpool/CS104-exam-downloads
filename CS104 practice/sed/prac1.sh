@@ -1,0 +1,1 @@
+sed 's/^\([a-z]\+\)$/fruit_\1/' input.txt > output.txt

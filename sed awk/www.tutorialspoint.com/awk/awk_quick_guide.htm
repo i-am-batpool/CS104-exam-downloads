@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<head>
+<title>AWK Quick Guide</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+<meta name="keywords" content="AWK, AWK programming, AWK commands, scripting, text processing, data manipulation, AWK syntax, programming languages">
+<meta name="description" content="Explore the AWK programming language with our quick guide. Learn syntax, commands, and practical examples to boost your scripting skills.">
+<!-- Open Graph Meta Tags for Social Sharing -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWK Quick Guide">
+<meta property="og:description" content="Discover the essentials of AWK with our comprehensive quick guide. Master text processing and data manipulation efficiently.">
+<meta property="og:url" content="https://www.tutorialspoint.com/awk/awk_quick_guide.htm">
+<meta property="og:image" content="https://www.tutorialspoint.com/images/tp_logo_436.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="436">
+<meta property="og:image:height" content="228">
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AWK Quick Guide">
+<meta name="twitter:description" content="Unlock the power of AWK programming with our quick guide. Learn key commands and examples for effective text processing.">
+<meta name="twitter:image" content="https://www.tutorialspoint.com/images/tp_logo_436.png">
+<!-- Favicon -->
+<link rel="icon" href="https://www.tutorialspoint.com/images/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<!-- Preload Google Fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "AWK Quick Guide",
+      "author": {
+        "@type": "Organization",
+        "name": "TutorialsPoint"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TutorialsPoint",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.tutorialspoint.com/images/tp_logo_436.png"
+        }
+      },
+      "datePublished": "2013-07-19T11:31:39+00:00",
+      "dateModified": "2025-03-25T10:38:09+00:00",
+      "isPartOf": {
+          "@type": "WebSite",
+          "name": "TutorialsPoint",
+          "url": "https://www.tutorialspoint.com/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+		"@id": "https://www.tutorialspoint.com/awk/index.htm"
+      },
+      "description": "Explore the AWK programming language with our quick guide. Learn syntax, commands, and practical examples to boost your scripting skills.",
+      "image": "https://www.tutorialspoint.com/images/tp_logo_436.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.tutorialspoint.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Awk",
+          "item": "https://www.tutorialspoint.com/awk/index.htm"
+        }
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AWK Quick Guide",
+          "item": "https://www.tutorialspoint.com/awk/awk_quick_guide.htm"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://config.undrads.com/prebid_config_2358294094.min.js"></script>
+<link rel="stylesheet" href="/static/css/new-lib-style.css?mv44.0" media="screen, print">
+<link rel="canonical" href="https://www.tutorialspoint.com/awk/awk_quick_guide.htm">
+</head>
+<body class="[--nav-1-height:44px] md:[--nav-2-height:68px] [--nav-2-height:60px] [--nav-3-height:40px]">
+   <nav class="bg-[#2c9d30] z-[11] text-sm max-lg:sticky top-0 text-white flex items-center h-(--nav-1-height) [&_a]:hover:underline">
+      <div
+         class="w-(--container) px-4 mx-auto flex items-center gap-6 overflow-x-auto scrollbar-hidden whitespace-nowrap">
+         <a class="min-w-fit" href="/index.htm" alt="Online Courses, Certifications &amp; eBooks">
+            <i class="fa-sharp fa-light fa-home"></i> Home
+         </a>
+         <a class="min-w-fit" href="/whiteboard.htm" title="Online Whiteboard">
+            <i class="fa-sharp fa-light fa-chalkboard"></i> Whiteboard</a>
+         </a>
+         <a class="min-w-fit" href="/assist.php" title="AI Study Assistant">
+            <i class="fa-sharp fa-light fa-message-bot"></i> AI Assistant</a>
+         </a>
+         <a class="min-w-fit" href="/compilers/index.htm" title="Online Compilers and Editors">
+            <i class="fa-sharp fa-light fa-code"></i> Online Compilers
+         </a>
+         <a class="min-w-fit" href="/job_search.php" alt="Latest Jop Openings">
+            <i class="fa-sharp fa-light fa-suitcase top-nav-icon"></i> Jobs
+         </a>
+	 <a class="min-w-fit" href="/online_dev_tools.htm" alt="Development Tools">
+	    <i class="fa-sharp fa-light fa-tools"></i> Tools
+         </a>
+         <a class="min-w-fit" href="/articles/index.php" alt="Tutorials And Articles">
+            <i class="fa-sharp fa-light fa-pen-to-square top-nav-icon"></i> Articles
+         </a>
+         <a class="min-w-fit" href="https://market.tutorialspoint.com/business/index.asp" alt="Corporate Training - Training For A Team">
+            <i class="fa-sharp fa-light fa-screen-users top-nav-icon"></i> Corporate Training
+         </a>
+         <a class="min-w-fit" href="/practice/index.htm" title="Practice"><i class="fa-sharp fa-light fa-display-code"></i> Practice</a>
+         <div class="ml-auto flex items-center gap-2">
+            <a class=" bg-[#318634] size-8 grid place-items-center" target="_blank"
+               href="https://www.facebook.com/tutorialspointindia" aria-label="Connect with us on Facebook" rel="nofollow">
+               <i class="fa-sharp fa-light fa-brands fa-facebook-f !h-[18px]"></i>
+            </a>
+            <a class="bg-[#318634] size-8 grid place-items-center" target="_blank"
+               href="https://www.instagram.com/tutorialspoint_/" aria-label="Connect with us on Instagram" rel="nofollow">
+               <i class="fa-sharp fa-light fa-brands fa-instagram !h-[18px]"></i>
+            </a>
+            <a class="bg-[#318634] size-8 grid place-items-center" target="_blank"
+               href="https://twitter.com/tutorialspoint" aria-label="Connect with us on Twitter" rel="nofollow">
+               <i class="fa-sharp fa-light fa-brands fa-x-twitter !h-[18px]"></i>
+            </a>
+            <a class="bg-[#318634] size-8 grid place-items-center" target="_blank" rel="nofollow"
+               href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" aria-label="Connect with us on Youtube">
+               <i class="fa-sharp fa-light fa-brands fa-youtube !h-[18px]"></i>
+            </a>
+            <a class="bg-[#318634] size-8 grid place-items-center" target="_blank"
+               href="https://www.linkedin.com/company/tutorialspoint/" aria-label="Connect with us on LinkedIn" rel="nofollow">
+               <i class="fa-sharp fa-light fa-brands fa-linkedin-in !h-[18px]"></i>
+            </a>
+         </div>
+      </div>
+      <div class="w-(--container) lg:hidden px-4 mx-auto absolute h-full pointer-events-none inset-x-0">
+         <div class="absolute inset-y-0 right-0 h-full w-10 bg-gradient-to-l from-[#2c9d30] to-transparent"
+            aria-hidden="true">
+         </div>
+      </div>
+   </nav>
+   <nav
+      class="h-(--nav-2-height) z-[11] sticky bg-white top-(--nav-1-height) lg:top-0 px-3 flex items-center border-b border-gray-300">
+      <div class="w-(--container) mx-auto  flex gap-3 items-center">
+         <a href="https://www.tutorialspoint.com" class="block md:w-full md:max-w-[226px]" title="Tutorialspoint">
+            <svg class="max-md:hidden w-full" xmlns="http://www.w3.org/2000/svg" width="226" height="42" viewBox="0 0 226 42" fill="none">
+               <path
+                  d="M76.2136 13.8408V27.7576H72.3845V26.1045C71.3229 27.3193 69.7701 27.9689 68.0642 27.9689C64.5731 27.9689 62.1172 26.0042 62.1172 21.7103V13.8461H66.1523V21.1135C66.1523 23.4426 67.1874 24.4778 68.9726 24.4778C70.7577 24.4778 72.1785 23.2895 72.1785 20.7279V13.8461H76.2136V13.8408Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M89.1484 20.7959C89.1484 16.6077 92.3807 13.6289 96.8066 13.6289C101.233 13.6289 104.438 16.6024 104.438 20.7959C104.438 24.9894 101.233 27.9629 96.8066 27.9629C92.3807 27.9629 89.1484 24.9894 89.1484 20.7959ZM100.351 20.7959C100.351 18.3928 98.8242 16.9404 96.8066 16.9404C94.7891 16.9404 93.2363 18.3876 93.2363 20.7959C93.2363 23.2043 94.7891 24.6514 96.8066 24.6514C98.8242 24.6514 100.351 23.2043 100.351 20.7959Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M115.28 13.6348V17.3582C114.942 17.3318 114.683 17.3054 114.377 17.3054C112.153 17.3054 110.68 18.5202 110.68 21.1873V27.7575H106.645V13.8407H110.5V15.6787C111.482 14.3319 113.141 13.6348 115.285 13.6348H115.28Z"
+                  fill="#40A944"></path>
+               <path d="M117.695 13.8408H121.73V27.7576H117.695V13.8408Z" fill="#40A944">
+               </path>
+               <path
+                  d="M139.119 13.8402V27.757H135.263V26.1514C134.255 27.3661 132.781 27.9629 130.917 27.9629C126.987 27.9629 123.961 25.169 123.961 20.7959C123.961 16.4228 126.987 13.6289 130.917 13.6289C132.623 13.6289 134.07 14.1729 135.079 15.3084V13.8349H139.114L139.119 13.8402ZM135.163 20.7959C135.163 18.3928 133.61 16.9404 131.619 16.9404C129.628 16.9404 128.049 18.3876 128.049 20.7959C128.049 23.2043 129.602 24.6514 131.619 24.6514C133.637 24.6514 135.163 23.2043 135.163 20.7959Z"
+                  fill="#40A944"></path>
+               <path d="M146.402 8.5625H142.367V27.7555H146.402V8.5625Z" fill="#40A944">
+               </path>
+               <path
+                  d="M149.141 26.4622L150.487 23.5679C151.729 24.3707 153.619 24.9147 155.325 24.9147C157.19 24.9147 157.887 24.4235 157.887 23.6471C157.887 21.3708 149.479 23.7 149.479 18.1385C149.479 15.4978 151.861 13.6387 155.917 13.6387C157.829 13.6387 159.952 14.077 161.272 14.8534L159.925 17.7266C158.552 16.9502 157.184 16.6914 155.917 16.6914C154.105 16.6914 153.329 17.2618 153.329 17.9854C153.329 20.3673 161.737 18.0646 161.737 23.5468C161.737 26.1347 159.334 27.9674 155.167 27.9674C152.811 27.9674 150.435 27.3231 149.141 26.4675V26.4622Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M178.226 20.9541C178.226 25.0948 175.332 27.8835 171.45 27.8835C169.279 27.8835 167.415 26.9539 166.279 25.1952V32.7742H164.441V14.1515H166.2V16.8398C167.315 15.0283 169.2 14.0459 171.45 14.0459C175.332 14.0459 178.226 16.8398 178.226 20.9541ZM176.388 20.9541C176.388 17.8011 174.191 15.6515 171.318 15.6515C168.445 15.6515 166.248 17.7958 166.248 20.9541C166.248 24.1125 168.418 26.2568 171.318 26.2568C174.218 26.2568 176.388 24.1336 176.388 20.9541Z"
+                  fill="#000"></path>
+               <path
+                  d="M180.129 20.9541C180.129 16.919 183.076 14.0459 187.058 14.0459C191.041 14.0459 193.966 16.919 193.966 20.9541C193.966 24.9892 191.046 27.8835 187.058 27.8835C183.071 27.8835 180.129 24.9892 180.129 20.9541ZM192.102 20.9541C192.102 17.7747 189.953 15.6515 187.058 15.6515C184.164 15.6515 181.988 17.7747 181.988 20.9541C181.988 24.1336 184.159 26.2568 187.058 26.2568C189.958 26.2568 192.102 24.1336 192.102 20.9541Z"
+                  fill="#000"></path>
+               <path d="M196.754 14.1523H198.592V27.7575H196.754V14.1523Z" fill="#000"></path>
+               <path
+                  d="M215.288 19.8661V27.7567H213.45V20.051C213.45 17.1778 211.95 15.7043 209.362 15.7043C206.442 15.7043 204.604 17.5159 204.604 20.6161V27.7567H202.766V14.1515H204.524V16.6602C205.507 15.0071 207.345 14.0459 209.695 14.0459C213.006 14.0459 215.283 15.9578 215.283 19.8661H215.288Z"
+                  fill="#000"></path>
+               <path
+                  d="M59.3346 24.2389C58.8699 24.5769 58.2731 24.7565 57.6815 24.7565C56.5935 24.7565 55.9756 24.1122 55.9756 22.9185V17.2568H59.4139V14.1512H55.9756V10.2852L51.9405 11.2411V14.1512H50.2188V17.2568H51.9405V22.9714C51.9405 26.2829 53.8313 27.9624 57.1375 27.9624C58.3523 27.9624 59.567 27.6772 60.3962 27.0804L59.3346 24.2336V24.2389Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M87.2878 24.2389C86.823 24.5769 86.2262 24.7565 85.6347 24.7565C84.5467 24.7565 83.9287 24.1122 83.9287 22.9185V17.2568H87.367V14.1512H83.9287V10.2852L79.8936 11.2411V14.1512H78.1719V17.2568H79.8936V22.9714C79.8936 26.2829 81.7844 27.9624 85.0907 27.9624C86.3054 27.9624 87.5202 27.6772 88.3494 27.0804L87.2878 24.2336V24.2389Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M119.713 11.8222C120.827 11.8222 121.73 10.9189 121.73 9.80465C121.73 8.69039 120.827 7.78711 119.713 7.78711C118.599 7.78711 117.695 8.69039 117.695 9.80465C117.695 10.9189 118.599 11.8222 119.713 11.8222Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M197.674 11.8222C198.788 11.8222 199.691 10.9189 199.691 9.80465C199.691 8.69039 198.788 7.78711 197.674 7.78711C196.56 7.78711 195.656 8.69039 195.656 9.80465C195.656 10.9189 196.56 11.8222 197.674 11.8222Z"
+                  fill="#40A944"></path>
+               <path
+                  d="M225.15 25.6071C224.633 26.0719 223.909 26.3043 223.133 26.3043C221.606 26.3043 220.803 25.4223 220.803 23.822V15.699H224.918V14.1462H220.803V10.2168L218.965 11.1728V14.1462H217.043V15.699H218.965V23.9223C218.965 26.4311 220.386 27.8782 222.948 27.8782C224.009 27.8782 225.097 27.5666 225.794 26.9222L225.15 25.6019V25.6071Z"
+                  fill="#000"></path>
+               <path
+                  d="M27.3002 39.5829C33.1626 39.4561 38.4072 35.87 40.8842 30.5568C42.3208 27.4829 43.0444 24.013 42.8542 20.3582C42.2785 9.30395 33.1521 0.394029 22.082 0.0718569C9.95038 -0.282005 0 9.44655 0 21.5043C0 30.7099 5.80439 38.5583 13.9485 41.6004C13.1721 40.7871 12.6017 39.7941 12.2531 38.6217C11.7091 36.8101 11.725 34.6711 12.2954 32.2046L15.2319 19.8881H9.16343L10.1564 15.5837L10.4257 14.4429H16.5259L16.6368 13.9411L18.0628 7.76175L26.9727 6.05582L25.1506 13.9411L23.8408 19.8881L20.8197 33.2609C20.3602 35.2626 20.5398 36.8101 21.3743 37.8928C21.3743 37.8928 22.6207 39.6832 27.3002 39.5829ZM29.4128 13.4605C31.8951 12.9904 34.0288 15.1242 33.5588 17.6065C33.2947 18.9902 32.1803 20.1099 30.7912 20.374C28.3089 20.8441 26.1752 18.7103 26.6453 16.228C26.9093 14.8443 28.0237 13.7246 29.4128 13.4605Z"
+                  fill="#40A944"></path>
+            </svg>
+            <svg class="md:hidden" xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42"
+               fill="none">
+               <path
+                  d="M27.3002 39.5829C33.1626 39.4561 38.4072 35.87 40.8842 30.5568C42.3208 27.4829 43.0444 24.013 42.8542 20.3582C42.2785 9.30395 33.1521 0.394029 22.082 0.0718569C9.95038 -0.282005 0 9.44655 0 21.5043C0 30.7099 5.80439 38.5583 13.9485 41.6004C13.1721 40.7871 12.6017 39.7941 12.2531 38.6217C11.7091 36.8101 11.725 34.6711 12.2954 32.2046L15.2319 19.8881H9.16343L10.1564 15.5837L10.4257 14.4429H16.5259L16.6368 13.9411L18.0628 7.76175L26.9727 6.05582L25.1506 13.9411L23.8408 19.8881L20.8197 33.2609C20.3602 35.2626 20.5398 36.8101 21.3743 37.8928C21.3743 37.8928 22.6207 39.6832 27.3002 39.5829ZM29.4128 13.4605C31.8951 12.9904 34.0288 15.1242 33.5588 17.6065C33.2947 18.9902 32.1803 20.1099 30.7912 20.374C28.3089 20.8441 26.1752 18.7103 26.6453 16.228C26.9093 14.8443 28.0237 13.7246 29.4128 13.4605Z"
+                  fill="#40A944"></path>
+            </svg>
+         </a>
+         <button data-toc-toggle aria-expanded="false" class="lg:mr-10 min-w-fit cursor-pointer group flex items-center gap-1.5">
+            Chapters
+            <i class="fa-sharp max-md:group-aria-expanded:-rotate-90 fa-light fa-angle-down"></i>
+         </button>
+         <div data-categories class="ml-auto lg:ml-7">
+            <button data-categories-toggle aria-expanded="false" class="lg:mr-10 min-w-fit cursor-pointer group flex items-center gap-1.5">
+               <i class="fa-sharp fa-light fa-grid-2" aria-hidden="true"></i>
+               <span>Categories</span>
+               <i class="fa-sharp max-md:group-aria-expanded:-rotate-90 fa-light fa-angle-down" aria-hidden="true"></i>
+            </button>
+            <div data-categories-popup class="w-full shadow-lg h-[calc(100vh-var(--nav-2-height)-var(--nav-1-height))] top-(--nav-2-height) text-base lg:text-sm max-lg:overflow-y-auto lg:h-[519px] bottom-0 flex-col [&_a]:py-2 bg-white z-[11] lg:max-w-fit lg:flex-row max-lg:left-0 border border-gray-300 hidden data-[visible]:flex absolute lg:items-start">
+               <div data-categories-tabs-list class="divide-y flex flex-col h-full lg:overflow-y-auto [&_a]:py-4 [&_a]:px-3 divide-gray-300">
+                  <a class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" aria-selected="true" href="#item1" title="AI, ML, and Data Science Tutorials">
+                     <span>AI, ML, and Data Science</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item2" title="Programming Languages Tutorials">
+                     <span>Programming Languages</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item3" title="Web Development Languages Tutorials">
+                     <span>Web Development Languages</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item4" title="DevOps Tutorials">
+                     <span>DevOps</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item5" title="Database Tutorials">
+                     <span>Databases</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item6" title="Computer Science Subject Tutorials">
+                     <span>Computer Science Subjects</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item7" title="Python Technologies Tutorials">
+                     <span>Python Technologies</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 transition-colors" href="#item8" title="Software Testing Tutorials">
+                     <span>Software Testing</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a aria-selected="false" class="w-full flex items-center lg:gap-10 hover:bg-gray-100 lg:border-b-transparent transition-colors" href="#item9" title="Cyber Security Tutorials">
+                     <span>Cyber Security</span>
+                     <i class="fa-sharp fa-light !h-5 lg:!h-4 ml-auto fa-angle-right" aria-hidden="true"></i>
+                  </a>
+                  <a href="/top-categories.htm" class="sticky mt-auto bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center hover:bg-[#27902b] transition-colors" title="View All Tutorial Categories">
+                     <i class="fa-sharp fa-light fa-cubes" aria-hidden="true"></i> <span>All Categories</span>
+                  </a>
+               </div>
+               <div data-categories-panels
+                  class="has-[[data-visible]]:h-full [&_a:not(.sticky)]:hover:bg-gray-200 [&_a]:transition-colors lg:[&_a:not(.sticky)]:border-l [&_a]:border-gray-300 lg:bg-gray-100 [&>div]:grow [&>div>div]:grow [&>div]:flex lg:overflow-y-auto [&>div]:flex-col lg:h-full flex flex-col lg:min-w-[350px]">
+                  <div id="item1" role="tabpanel" aria-labelledby="tab-item1">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/artificial_intelligence/index.htm" title="Learn Artificial Intelligence">Artificial Intelligence</a>
+                        <a href="/machine_learning/index.htm" title="Learn Machine Learning">Machine Learning</a>
+                        <a href="/machine_learning_with_python/index.htm" title="Learn Machine Learning with Python">ML With Python</a>
+                        <a href="/data_science/index.htm" title="Learn Data Science">Data Science</a>
+                        <a href="/statistics/index.htm" title="Learn Statistics">Statistics</a>
+                        <a href="/natural_language_processing/index.htm" title="Learn Natural Language Processing">NLP</a>
+                        <a href="/artificial_neural_network/index.htm" title="Learn Neural Networks">Neural Networks</a>
+                        <a href="/tensorflow/index.htm" title="Learn TensorFlow">TensorFlow</a>
+                        <a href="/pytorch/index.htm" title="Learn PyTorch">PyTorch</a>
+                        <a href="/matplotlib/index.htm" title="Learn Matplotlib">Matplotlib</a>
+                        <a href="/numpy/index.htm" title="Learn NumPy">NumPy</a>
+                        <a href="/python_pandas/index.htm" title="Learn Pandas">Pandas</a>
+                        <a href="/scipy/index.htm" title="Learn SciPy">SciPy</a>
+                        <a href="/big_data_analytics/index.htm" title="Learn Big Data Analytics">Big Data Analytics</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors" href="/machine_learning_tutorials.htm" title="View All Machine Learning Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item2" role="tabpanel" aria-labelledby="tab-item2">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/python/index.htm" title="Learn Python Programming">Learn Python</a>
+                        <a href="/java/index.htm" title="Learn Java Programming">Learn Java</a>
+                        <a href="/cplusplus/index.htm" title="Learn C++ Programming">Learn C++</a>
+                        <a href="/cprogramming/index.htm" title="Learn C Programming">Learn C</a>
+                        <a href="/php/index.htm" title="Learn PHP Programming">Learn PHP</a>
+                        <a href="/go/index.htm" title="Learn Go Programming">Learn Go</a>
+                        <a href="/kotlin/index.htm" title="Learn Kotlin Programming">Learn Kotlin</a>
+                        <a href="/r/index.htm" title="Learn R Programming">Learn R</a>
+                        <a href="/asp.net/index.htm" title="Learn ASP.Net">Learn ASP.Net</a>
+                        <a href="/csharp/index.htm" title="Learn C# Programming">Learn C#.Net</a>
+                        <a href="/vb.net/index.htm" title="Learn VB.Net">Learn VB.Net</a>
+                        <a href="/scala/index.htm" title="Learn Scala Programming">Learn Scala</a>
+                        <a href="/swift/index.htm" title="Learn Swift Programming">Learn Swift</a>
+                        <a href="/perl/index.htm" title="Learn Perl Programming">Learn Perl</a>
+                        <a href="/ruby/index.htm" title="Learn Ruby Programming">Learn Ruby</a>
+                        <a href="/rust/index.htm" title="Learn Rust Programming">Learn Rust</a>
+                        <a href="/lua/index.htm" title="Learn Lua Programming">Learn Lua</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors"
+                           href="/computer_programming_tutorials.htm" title="View All Programming Language Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item3" role="tabpanel" aria-labelledby="tab-item3">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/html/index.htm" title="Learn HTML">Learn HTML</a>
+                        <a href="/css/index.htm" title="Learn CSS">Learn CSS</a>
+                        <a href="/javascript/index.htm" title="Learn JavaScript">Learn JavaScript</a>
+                        <a href="/jquery/index.htm" title="Learn jQuery">Learn jQuery</a>
+                        <a href="/reactjs/index.htm" title="Learn React.js">ReactJs</a>
+                        <a href="/nodejs/index.htm" title="Learn Node.js">NodeJs</a>
+                        <a href="/wordpress/index.htm" title="Learn WordPress">Wordpress</a>
+                        <a href="/angularjs/index.htm" title="Learn Angular.js">AngularJs</a>
+                        <a href="/php/index.htm" title="Learn PHP">Learn PHP</a>
+                        <a href="/django/index.htm" title="Learn Django">Django</a>
+                        <a href="/json/index.htm" title="Learn JSON">Learn JSON</a>
+                        <a href="/codeigniter/index.htm" title="Learn CodeIgniter">Codeigniter</a>
+                        <a href="/typescript/index.htm" title="Learn TypeScript">TypeScript</a>
+                        <a href="/ajax/index.htm" title="Learn AJAX">Learn Ajax</a>
+                        <a href="/bootstrap/index.htm" title="Learn Bootstrap">Bootstrap</a>
+                        <a href="/sass/index.htm" title="Learn Sass">Learn Sass</a>
+                        <a href="/appml/index.htm" title="Learn AppML">AppML</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors"
+                           href="/web_development_tutorials.htm" title="View All Web Development Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item4" role="tabpanel" aria-labelledby="tab-item4">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/git/index.htm" title="Learn Git">GIT</a>
+                        <a href="/amazon_web_services/index.htm" title="Learn Amazon Web Services">AWS</a>
+                        <a href="/docker/index.htm" title="Learn Docker">Docker</a>
+                        <a href="/kubernetes/index.htm" title="Learn Kubernetes">Kubernetes</a>
+                        <a href="/microsoft_azure/index.htm" title="Learn Microsoft Azure">Azure</a>
+                        <a href="/gitlab/index.htm" title="Learn GitLab">Gitlab</a>
+                        <a href="/jira/index.htm" title="Learn Jira">Jira</a>
+                        <a href="/gerrit/index.htm" title="Learn Gerrit">Gerrit</a>
+                        <a href="/ansible/index.htm" title="Learn Ansible">Ansible</a>
+                        <a href="/bugzilla/index.htm" title="Learn Bugzilla">Bugzilla</a>
+                        <a href="/chef/index.htm" title="Learn Chef">Chef</a>
+                        <a href="/saltstack/index.htm" title="Learn SaltStack">SaltStack</a>
+                        <a href="/openshift/index.htm" title="Learn OpenShift">OpenShift</a>
+                        <a href="/puppet/index.htm" title="Learn Puppet">Puppet</a>
+                        <a href="/unix/index.htm" title="Learn UNIX">UNIX</a>
+                        <a href="/linux_admin/index.htm" title="Learn Linux Administration">Linux Admin</a>
+                        <a href="/ubuntu/index.htm" title="Learn Ubuntu">Ubuntu</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors"
+                           href="/devops_tutorials.htm" title="View All DevOps Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item5" role="tabpanel" aria-labelledby="tab-item5">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/dbms/index.htm" title="Learn Database Management Systems">DBMS</a>
+                        <a href="/sql/index.htm" title="Learn SQL">SQL</a>
+                        <a href="/plsql/index.htm" title="Learn PL/SQL">PL/SQL</a>
+                        <a href="/mysql/index.htm" title="Learn MySQL">MySQL</a>
+                        <a href="/tinydb/index.htm" title="Learn TinyDB">TinyDB</a>
+                        <a href="/ms_sql_server/index.htm" title="Learn Microsoft SQL Server">SQL Server</a>
+                        <a href="/mongodb/index.htm" title="Learn MongoDB">MongoDB</a>
+                        <a href="/postgresql/index.htm" title="Learn PostgreSQL">PostgreSQL</a>
+                        <a href="/sqlite/index.htm" title="Learn SQLite">SQLite</a>
+                        <a href="/redis/index.htm" title="Learn Redis">Redis</a>
+                        <a href="/phpmyadmin/index.htm" title="Learn PHPMyAdmin">PHP MyAdmin</a>
+                        <a href="/mariadb/index.htm" title="Learn MariaDB">MariaDB</a>
+                        <a href="/couchdb/index.htm" title="Learn CouchDB">CouchDB</a>
+                        <a href="/db2/index.htm" title="Learn DB2">DB2</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors"
+                           href="/database_tutorials.htm" title="View All Database Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item6" role="tabpanel" aria-labelledby="tab-item6">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/computer_fundamentals/index.htm" title="Learn Computer Fundamentals">Computer Fundamentals</a>
+                        <a href="/operating_system/index.htm" title="Learn Operating System Concepts">Operating System</a>
+                        <a href="/dbms/index.htm" title="Learn Database Management Systems">DBMS</a>
+                        <a href="/data_structures_algorithms/index.htm" title="Learn Data Structures and Algorithms">DSA</a>
+                        <a href="/data_communication_computer_network/index.htm" title="Learn Computer Networks">Computer Networks</a>
+                        <a href="/software_engineering/index.htm" title="Learn Software Engineering">Software Engineering</a>
+                        <a href="/computer_graphics/index.htm" title="Learn Computer Graphics">Computer Graphics</a>
+                        <a href="/data_mining/index.htm" title="Learn Data Mining">Data Mining</a>
+                        <a href="/digital_marketing/index.htm" title="Learn Digital Marketing">Digital Marketing</a>
+                        <a href="/seo/index.htm" title="Learn Search Engine Optimization">SEO</a>
+                        <a href="/digital_circuits/index.htm" title="Learn Digital Circuits">Digital Circuits</a>
+                        <a href="/discrete_mathematics/index.htm" title="Learn Discrete Mathematics">Discrete Mathematics</a>
+                        <a href="/cryptography/index.htm" title="Learn Cryptography">Cryptography</a>
+                        <a href="/cloud_computing/index.htm" title="Learn Cloud Computing">Cloud Computing</a>
+                        <a href="/compiler_design/index.htm" title="Learn Compiler Design">Compiler Design</a>
+                        <a href="/embedded_systems/index.htm" title="Learn Embedded Systems">Embedded Systems</a>
+                        <a href="/microprocessor/index.htm" title="Learn Microprocessors">Microprocessors</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors"
+                           href="/computer_science_tutorials.htm" title="View All Computer Science Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item7" role="tabpanel" aria-labelledby="tab-item7">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/python/index.htm" title="Learn Python Programming">Python</a>
+                        <a href="/numpy/index.htm" title="Learn NumPy for Data Analysis">NumPy</a>
+                        <a href="/python_pandas/index.htm" title="Learn Pandas for Data Analysis">Pandas</a>
+                        <a href="/matplotlib/index.htm" title="Learn Matplotlib for Data Visualization">Matplotlib</a>
+                        <a href="/django/index.htm" title="Learn Django Web Framework">Django</a>
+                        <a href="/pyqt/index.htm" title="Learn PyQt for GUI Development">PyQt</a>
+                        <a href="/pycharm/index.htm" title="Learn PyCharm IDE">PyCharm</a>
+                        <a href="/python_pillow/index.htm" title="Learn Pillow for Image Processing">Pillow</a>
+                        <a href="/opencv/index.htm" title="Learn OpenCV for Computer Vision">OpenCV</a>
+                        <a href="/seaborn/index.htm" title="Learn Seaborn for Statistical Data Visualization">Seaborn</a>
+                        <a href="/machine_learning_with_python/index.htm" title="Learn Machine Learning with Python">ML with Python</a>
+                        <a href="/scipy/index.htm" title="Learn SciPy for Scientific Computing">SciPy</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors" href="/python_technologies_tutorials.htm" title="View All Python Technology Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item8" role="tabpanel" aria-labelledby="tab-item8">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/software_testing/index.htm" title="Learn Software Testing Fundamentals">Software Testing</a>
+                        <a href="/jira/index.htm" title="Learn Jira for Project Management">Jira</a>
+                        <a href="/selenium/index.htm" title="Learn Selenium for Test Automation">Selenium</a>
+                        <a href="/testrail/index.htm" title="Learn TestRail for Test Case Management">TestRail</a>
+                        <a href="/postman/index.htm" title="Learn Postman for API Testing">Postman</a>
+                        <a href="/cucumber/index.htm" title="Learn Cucumber for BDD Testing">Cucumber</a>
+                        <a href="/cypress/index.htm" title="Learn Cypress for Front-End Testing">Cypress</a>
+                        <a href="/watir/index.htm" title="Learn Watir for Ruby-Based Testing">Watir</a>
+                        <a href="/agile/index.htm" title="Learn Agile Methodology">Agile</a>
+                        <a href="/jmeter/index.htm" title="Learn JMeter for Performance Testing">jMeter</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors" href="/software_testing_tutorials.htm" title="View All Software Testing Tutorials">See all</a>
+                     </div>
+                  </div>
+                  <div id="item9" role="tabpanel" aria-labelledby="tab-item9">
+                     <button class="lg:hidden m-3 bg-gray-200 px-4 w-fit flex items-center gap-2 pr-4 py-1.5">
+                        <i class="fa-sharp fa-light fa-angle-left !h-4" aria-hidden="true"></i> <span>Back</span>
+                     </button>
+                     <div class="flex flex-col [&_a]:py-4 [&_a]:px-3 max-lg:divide-y divide-gray-300">
+                        <a href="/blockchain/index.htm" title="Learn Blockchain Technology">Blockchain</a>
+                        <a href="/information_security_cyber_law/index.htm" title="Learn Information Security and Cyber Law">Information Security</a>
+                        <a href="/computer_security/index.htm" title="Learn Computer Security Fundamentals">Computer Security</a>
+                        <a href="/internet_security/index.htm" title="Learn Internet Security Best Practices">Internet Security</a>
+                        <a href="/network_security/index.htm" title="Learn Network Security">Network Security</a>
+                        <a href="/wireless_security/index.htm" title="Learn Wireless Security">Wireless Security</a>
+                        <a class="sticky bottom-0 bg-[#2c9d30] !py-2.5 text-white text-center mt-auto hover:bg-[#27902b] transition-colors" href="/cyber_security_tutorials.htm" title="View All Cyber Security Tutorials">See all</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <button aria-expanded="false" data-nav-toggle class="lg:hidden group flex items-center gap-1.5"
+            aria-label="Toggle menu">
+            <svg class="group-aria-expanded:hidden size-7" xmlns="http://www.w3.org/2000/svg" fill="none"
+               viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg class="group-aria-expanded:block hidden size-7" xmlns="http://www.w3.org/2000/svg" fill="none"
+               viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+         </button>
+         <div data-nav
+            class="w-full max-lg:shadow-lg top-(--nav-2-height) max-lg:flex-col [&_a]:py-2 max-lg:bg-white z-[2] left-0 max-lg:p-4 max-lg:border border-gray-300 max-lg:hidden max-lg:data-[visible]:flex max-lg:absolute flex lg:items-center lg:gap-6">
+            <div class="relative w-full max-w-[600px] max-lg:mb-2">
+               <input data-result="search-results" id="search-strings" name="key"
+                  class="border-black w-full py-2 border focus:border-[#2c9d30] placeholder:text-black/90 text-sm focus:outline-hidden px-3"
+                  placeholder="Search tutorials, courses and ebooks..." />
+               <div class="search-box search-box-inn right-0" id="search-results"></div>
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="absolute right-3 inset-y-0 my-auto size-5 opacity-50">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+               </svg>
+            </div>
+            <a href="/tutorialslibrary.htm" class="lg:ml-auto hover:underline    ">Library</a>
+            <a href="https://market.tutorialspoint.com/index.asp" class="hover:underline">Courses</a>
+            <a href="https://market.tutorialspoint.com/latest/certifications" class="hover:underline">Certifications</a>
+            <a href="https://www.tutorialspoint.com/market/login.jsp"
+               class="bg-[#2c9d30] py-2 px-4 text-white hover:opacity-80 max-lg:mt-1 transition-opacity font-semibold" id="nav__signup-link">Login</a>
+         </div>
+      </div>
+   </nav>
+   <nav class="bg-[#031926] text-sm text-white relative flex items-center h-(--nav-3-height) [&_a]:hover:bg-[#2c9d30]">
+      <div class="w-(--container) px-4 mx-auto absolute h-full pointer-events-none inset-x-0">
+         <div class="absolute inset-y-0 left-0 h-full w-10 bg-gradient-to-r from-[#031926] to-transparent"
+            aria-hidden="true">
+         </div>
+      </div>
+      <button class="w-[50px] !h-[30px] flex items-center cursor-pointer" data-scroll-prev>
+         <i class="fa-sharp fa-light !h-4 z-[2] ml-3 lg:ml-6 fa-angle-left"></i>
+      </button>
+      <div data-scroll-container class="w-(--container) px-4 mx-auto flex items-center overflow-x-auto scrollbar-hidden whitespace-nowrap h-full [&_a]:h-full [&_a]:flex [&_a]:items-center [&_a]:px-3.5 lg:[&_a]:px-5">
+         <a href="/sql/index.htm" title="SQL Tutorial">SQL</a>
+         <a href="/html/index.htm" title="HTML Tutorial">HTML</a>
+         <a href="/css/index.htm" title="CSS Tutorial">CSS</a>
+         <a href="/javascript/index.htm" title="JavaScript Tutorial">Javascript</a>
+         <a href="/python/index.htm" title="Python Tutorial">Python</a>
+         <a href="/java/index.htm" title="Java Tutorial">Java</a>
+         <a href="/cprogramming/index.htm" title="C Tutorial">C</a>
+         <a href="/cplusplus/index.htm" title="C++ Tutorial">C++</a>
+         <a href="/php/index.htm" title="PHP Tutorial">PHP</a>
+         <a href="/scala/index.htm" title="Scala Tutorial">Scala</a>
+         <a href="/csharp/index.htm" title="C# Tutorial">C#</a>
+         <a href="/tailwind_css/index.htm" title="Tailwind CSS Tutorial">Tailwind CSS</a>
+         <a href="/nodejs/index.htm" title="Node.js Tutorial">Node.js</a>
+         <a href="/mysql/index.htm" title="MySQL">MySQL</a>
+         <a href="/mongodb/index.htm" title="MongoDB Tutorial">MongoDB</a>
+         <a href="/plsql/index.htm" title="PL/SQL Tutorial">PL/SQL</a>
+         <a href="/swift/index.htm" title="Swift Tutorial">Swift</a>
+         <a href="/bootstrap/index.htm" title="Bootstrap Tutorial">Bootstrap</a>
+         <a href="/r/index.htm" title="R Programming">R</a>
+         <a href="/machine_learning/index.htm" title="Machine Learning">Machine Learning</a>
+         <a href="/blockchain/index.htm" title="Blockchain Tutorial">Blockchain</a>
+         <a href="/angular4/index.htm" title="Angular Tutorial">Angular</a>
+         <a href="/react_native/index.htm" title="React Native Tutorial">React Native</a>
+         <a href="/computer_fundamentals/index.htm" title="Computer Fundamentals Tutorial">Computer Fundamentals </a>
+         <a href="/compiler_design/index.htm" title="Compiler Design Tutorial">Compiler Design</a>
+         <a href="/operating_system/index.htm" title="Operating System Tutorial">Operating System</a>
+         <a href="/data_structures_algorithms/index.htm" title="Data Structure and Algorithms Tutorial">Data Structure and Algorithms </a>
+         <a href="/data_communication_computer_network/index.htm" title="Computer Network Tutorial"> Computer Network</a>
+         <a href="/dbms/index.htm" title="DBMS Tutorial">DBMS</a>
+         <a href="/excel/index.htm" title="Excel Tutorial">Excel</a>
+      </div>
+      <button class="cursor-pointer w-[50px]  h-[30px] flex items-center" data-scroll-next>
+         <i class="fa-sharp fa-light !h-4 z-[2] mr-3 lg:mr-6 fa-angle-right"></i>
+      </button>
+      <div class="w-(--container) px-4 mx-auto absolute h-full pointer-events-none inset-x-0">
+         <div class="absolute inset-y-0 right-0 h-full w-10 bg-gradient-to-l from-[#031926] to-transparent" aria-hidden="true">
+         </div>
+      </div>
+   </nav>
+<main class="bg-light" style="overflow: unset;">
+<div class="container-fluid">
+<div class="row">
+<div class="tutorial-toc">
+<div class="toc-nav">
+<div class="mini-logo">
+<img src="/awk/images/awk-mini-logo.jpg" alt="Awk Tutorial" />
+</div>
+<ul class="toc chapters">
+<li><a href="/awk/index.htm">AWK - Home</a></li>
+<li><a href="/awk/awk_overview.htm">AWK - Overview</a></li>
+<li><a href="/awk/awk_environment.htm">AWK - Environment</a></li>
+<li><a href="/awk/awk_workflow.htm">AWK - Workflow</a></li>
+<li><a href="/awk/awk_basic_syntax.htm">AWK - Basic Syntax</a></li>
+<li><a href="/awk/awk_basic_examples.htm">AWK - Basic Examples</a></li>
+<li><a href="/awk/awk_built_in_variables.htm">AWK - Built in Variables</a></li>
+<li><a href="/awk/awk_operators.htm">AWK - Operators</a></li>
+<li><a href="/awk/awk_regular_expressions.htm">AWK - Regular Expressions</a></li>
+<li><a href="/awk/awk_arrays.htm">AWK - Arrays</a></li>
+<li><a href="/awk/awk_control_flow.htm">AWK - Control Flow</a></li>
+<li><a href="/awk/awk_loops.htm">AWK - Loops</a></li>
+<li><a href="/awk/awk_built_in_functions.htm">AWK - Built in Functions</a></li>
+<li><a href="/awk/awk_user_defined_functions.htm">AWK - User Defined Functions</a></li>
+<li><a href="/awk/awk_output_redirection.htm">AWK - Output Redirection</a></li>
+<li><a href="/awk/awk_pretty_printing.htm">AWK - Pretty Printing</a></li>
+</ul>
+<ul class="toc chapters">
+<li><a href="/awk/awk_quick_guide.htm">AWK - Quick Guide</a></li>
+<li><a href="/awk/awk_useful_resources.htm">AWK - Useful Resources</a></li>
+<li><a href="/awk/awk_discussion.htm">AWK - Discussion</a></li>
+</ul>
+         <ul class="toc reading">
+            <li class="sreading">Selected Reading</li>
+            <li><a target="_blank" href="/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+            <li><a target="_blank" href="/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+            <li><a target="_blank" href="/questions_and_answers.htm">Questions and Answers</a></li>
+            <li><a target="_blank" href="/effective_resume_writing.htm">Effective Resume Writing</a></li>
+            <li><a target="_blank" href="/resume-builder.htm">AI Based Resume Builder</a></li>
+            <li><a target="_blank" href="/assist.php">Personal AI Study Assistant</a></li>
+            <li><a target="_blank" href="/generate_coding_logic.php">Generate Coding Logic</a></li>
+            <li><a target="_blank" href="/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+            <li><a target="_blank" href="/computer_glossary.htm">Computer Glossary</a></li>
+            <li><a target="_blank" href="/computer_whoiswho.htm">Who is Who</a></li>
+         </ul>
+      </div>
+      <div id="stickyparent" class="d-none d-sm-block">
+         <div style="height:0px;width:300px;" id="sticky-ad">
+          <!-- Placeholder for an advertisement -->
+         </div>
+      </div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+<!-- Tutorial Content Starts Here -->
+<div class="tutorial-content" id="mainContent">
+<h1>AWK - Quick Guide</h1>
+<hr>
+<!-- TAGNAME: 728x90_Top -->
+   <div class="adp_top_ads" style="height:90px; overflow: hidden; display: block;width: 728px;">
+       <ins class="undrads ua-display" data-ad-id="UNDR/2358294094/adunit/desktop/728X90/d215b490-b93a-4cc6-bd78-2af1f29cbf7c"></ins>
+    </div>
+<hr>
+<div class="library-page-top-nav">
+   <div class="button button--neutral" id="btn_top_previous">
+   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M1.03117 8.48836C0.64065 8.09783 0.64065 7.46467 1.03117 7.07414L7.39514 0.710183C7.78566 0.319658 8.41883 0.319658 8.80935 0.710183C9.19987 1.10071 9.19987 1.73387 8.80935 2.1244L3.15249 7.78125L8.80935 13.4381C9.19987 13.8286 9.19987 14.4618 8.80935 14.8523C8.41882 15.2428 7.78566 15.2428 7.39513 14.8523L1.03117 8.48836ZM3.12109 8.78125L1.73828 8.78125L1.73828 6.78125L3.12109 6.78125L3.12109 8.78125Z" fill="black" /></svg>
+   <a href="/awk/awk_pretty_printing.htm">
+      Previous
+   </a>
+   </div>
+   <div class="flex-group">
+      <div class="button " id="btn_top_next">
+   <a href="/awk/awk_useful_resources.htm">
+    Next
+   </a>
+   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none"><path
+   d="M8.87117 8.48836C9.26169 8.09783 9.26169 7.46467 8.87117 7.07414L2.50721 0.710183C2.11668 0.319658 1.48352 0.319658 1.09299 0.710183C0.70247 1.10071 0.70247 1.73387 1.09299 2.1244L6.74985 7.78125L1.093 13.4381C0.702471 13.8286 0.702471 14.4618 1.093 14.8523C1.48352 15.2428 2.11668 15.2428 2.50721 14.8523L8.87117 8.48836ZM6.78125 8.78125L8.16406 8.78125L8.16406 6.78125L6.78125 6.78125L6.78125 8.78125Z" fill="white" /></svg>
+   </div>
+   </div>
+</div>
+
+<div class="clearer"></div>
+<h1>AWK - Overview</h1>
+<p>AWK is an interpreted programming language. It is very powerful and specially designed for text processing. Its name is derived from the family names of its authors − <b>Alfred Aho, Peter Weinberger, and Brian Kernighan.</b></p>
+<p>The version of AWK that GNU/Linux distributes is written and maintained by the Free Software Foundation (FSF); it is often referred to as <b>GNU AWK.</b></p>
+<h2>Types of AWK</h2>
+<p>Following are the variants of AWK −</p>
+<ul class="list">
+<li><p><b>AWK</b> − Original AWK from AT &amp; T Laboratory.</p></li>
+<li><p><b>NAWK</b> − Newer and improved version of AWK from AT &amp; T Laboratory.</p></li>
+<li><p><b>GAWK</b> − It is GNU AWK. All GNU/Linux distributions ship GAWK. It is fully compatible with AWK and NAWK.</p></li>
+</ul>
+<div class="inserted-div"><script async="true" id="PS_67ebd889ca6f1325b65a5242" type="text/javascript" src="https://ads.playstream.media/api/adserver/scripts?PS_TAGID=67ebd889ca6f1325b65a5242&amp;PS_PUB_ID=67ebd5e3ca6f1325b65a46fe"></script></div>
+<h2>Typical Uses of AWK</h2>
+<p>Myriad of tasks can be done with AWK. Listed below are just a few of them −</p>
+<ul class="list">
+<li>Text processing,</li> 
+<li>Producing formatted text reports,</li>
+<li>Performing arithmetic operations,</li>
+<li>Performing string operations, and many more.</li>
+</ul>
+<h1>AWK - Environment</h1>
+<p>This chapter describes how to set up the AWK environment on your GNU/Linux system.</p>
+<h2>Installation Using Package Manager</h2>
+<p>Generally, AWK is available by default on most GNU/Linux distributions. You can use <b>which</b> command to check whether it is present on your system or not. In case you dont have AWK, then install it on Debian based GNU/Linux using Advance Package Tool <b>(APT)</b> package manager as follows −</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jeryy]$ sudo apt-get update
+[jeryy]$ sudo apt-get install gawk
+</pre>
+<p>Similarly, to install AWK on RPM based GNU/Linux, use Yellowdog Updator Modifier <b>yum</b> package manager as follows −</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[root]# yum install gawk
+</pre>
+<p>After installation, ensure that AWK is accessible via command line.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ which awk
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<pre class="result notranslate">
+/usr/bin/awk
+</pre>
+<h2>Installation from Source Code</h2>
+<p>As GNU AWK is a part of the GNU project, its source code is available for free download. We have already seen how to install AWK using package manager. Let us now understand how to install AWK from its source code.</p>
+<p>The following installation is applicable to any GNU/Linux software, and for most other freely-available programs as well. Here are the installation steps −</p>
+<p><b>Step 1</b> − Download the source code from an authentic place. The command-line utility <b>wget</b> serves this purpose.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ wget http://ftp.gnu.org/gnu/gawk/gawk-4.1.1.tar.xz
+</pre>
+<p><b>Step 2</b> − Decompress and extract the downloaded source code.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ tar xvf gawk-4.1.1.tar.xz
+</pre>
+<p><b>Step 3</b> − Change into the directory and run configure.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ ./configure
+</pre>
+<p><b>Step 4</b> − Upon successful completion, the <b>configure</b> generates Makefile. To compile the source code, issue a <b>make</b> command.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ make
+</pre>
+<p><b>Step 5</b> − You can run the test suite to ensure the build is clean. This is an optional step.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ make check
+</pre>
+<p><b>Step 6</b> − Finally, install AWK. Make sure you have super-user privileges.</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ sudo make install
+</pre>
+<p>That is it! You have successfully compiled and installed AWK. Verify it by executing the <b>awk</b> command as follows −</p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ which awk
+</pre>
+<p>On executing this code, you get the following result −</p>
+<pre class="result notranslate">
+/usr/bin/awk
+</pre>
+<h1>AWK - Workflow</h1>
+<p>To become an expert AWK programmer, you need to know its internals. AWK follows a simple workflow − Read, Execute, and Repeat. The following diagram depicts the workflow of AWK −</p>
+<img src="/awk/images/awk_workflow.jpg" alt="AWK Workflow">
+<h3>Read</h3>
+<p>AWK reads a line from the input stream (file, pipe, or stdin) and stores it in memory.</p>
+<h3>Execute</h3>
+<p>All AWK commands are applied sequentially on the input. By default AWK execute commands on every line. We can restrict this by providing patterns.</p>
+<h3>Repeat</h3>
+<p>This process repeats until the file reaches its end.</p>
+<h2>Program Structure</h2>
+<p>Let us now understand the program structure of AWK.</p>
+<h3>BEGIN block</h3>
+<p>The syntax of the BEGIN block is as follows −</p>
+<p><b>Syntax</b></p>
+<pre class="result notranslate">
+BEGIN {awk-commands}
+</pre>
+<p>The BEGIN block gets executed at program start-up. It executes only once. This is good place to initialize variables. BEGIN is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
+<h3>Body Block</h3>
+<p>The syntax of the body block is as follows −</p>
+<p><b>Syntax</b></p>
+<pre class="result notranslate">
+/pattern/ {awk-commands}
+</pre>
+<p>The body block applies AWK commands on every input line. By default, AWK executes commands on every line. We can restrict this by providing patterns. Note that there are no keywords for the Body block.</p>
+<h3>END Block</h3>
+<p>The syntax of the END block is as follows −</p>
+<p><b>Syntax</b></p>
+<pre class="result notranslate">
+END {awk-commands}
+</pre>
+<p>The END block executes at the end of the program. END is an AWK keyword and hence it must be in upper-case. Please note that this block is optional.</p>
+<p>Let us create a file <b>marks.txt</b> which contains the serial number, name of the student, subject name, and number of marks obtained.</p>
+<pre class="result notranslate">
+1)  Amit    Physics  80
+2)  Rahul   Maths    90
+3)  Shyam   Biology  87
+4)  Kedar   English  85
+5)  Hari    History  89
+</pre>
+<p>Let us now display the file contents with header by using AWK script.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN{printf "Sr No\tName\tSub\tMarks\n"} {print}' marks.txt
+</pre>
+<p>When this code is executed, it produces the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Sr No Name Sub Marks
+1) Amit Physics 80
+2) Rahul Maths 90
+3) Shyam Biology 87
+4) Kedar English 85
+5) Hari History 89
+</pre>
+<p>At the start, AWK prints the header from the BEGIN block. Then in the body block, it reads a line from a file and executes AWK's print command which just prints the contents on the standard output stream. This process repeats until file reaches the end.</p>
+<h1>AWK - Basic Syntax</h1>
+<p>AWK is simple to use. We can provide AWK commands either directly from the command line or in the form of a text file containing AWK commands.</p>
+<h2>AWK Command Line</h2>
+<p>We can specify an AWK command within single quotes at command line as shown −</p>
+<pre class="result notranslate">
+awk [options] file ...
+</pre>
+<h3>Example</h3>
+<p>Consider a text file <b>marks.txt</b> with the following content −</p>
+<pre class="result notranslate">
+1) Amit     Physics    80
+2) Rahul    Maths      90
+3) Shyam    Biology    87
+4) Kedar    English    85
+5) Hari     History    89
+</pre>
+<p>Let us display the complete content of the file using AWK as follows −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '{print}' marks.txt 
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+1) Amit     Physics    80
+2) Rahul    Maths      90
+3) Shyam    Biology    87
+4) Kedar    English    85
+5) Hari     History    89
+</pre>
+<h2>AWK Program File</h2>
+<p>We can provide AWK commands in a script file as shown −</p>
+<pre class="result notranslate">
+awk [options] -f file ....
+</pre>
+<p>First, create a text file <b>command.awk</b> containing the AWK command as shown below −</p>
+<pre class="result notranslate">
+{print}
+</pre>
+<p>Now we can instruct the AWK to read commands from the text file and perform the action. Here, we achieve the same result as shown in the above example.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk -f command.awk marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+1) Amit  Physics 80
+2) Rahul Maths   90
+3) Shyam Biology 87
+4) Kedar English 85
+5) Hari  History 89
+</pre>
+<h2>AWK Standard Options</h2>
+<p>AWK supports the following standard options which can be provided from the command line.</p>
+<h3>The -v option</h3>
+<p>This option assigns a value to a variable. It allows assignment before the program execution. The following example describes the usage of the -v option.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk -v name=Jerry 'BEGIN{printf "Name = %s\n", name}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Name = Jerry
+</pre>
+<h3>The --dump-variables[=file] option</h3>
+<p>It prints a sorted list of global variables and their final values to file. The default file is <b>awkvars.out</b>.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk --dump-variables ''
+[jerry]$ cat awkvars.out 
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+ARGC: 1
+ARGIND: 0
+ARGV: array, 1 elements
+BINMODE: 0
+CONVFMT: "%.6g"
+ERRNO: ""
+FIELDWIDTHS: ""
+FILENAME: ""
+FNR: 0
+FPAT: "[^[:space:]]+"
+FS: " "
+IGNORECASE: 0
+LINT: 0
+NF: 0
+NR: 0
+OFMT: "%.6g"
+OFS: " "
+ORS: "\n"
+RLENGTH: 0
+RS: "\n"
+RSTART: 0
+RT: ""
+SUBSEP: "\034"
+TEXTDOMAIN: "messages"
+</pre>
+<h3>The --help option</h3>
+<p>This option prints the help message on standard output.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk --help
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
+Usage: awk [POSIX or GNU style options] [--] 'program' file ...
+POSIX options : GNU long options: (standard)
+   -f progfile                --file=progfile
+   -F fs                      --field-separator=fs
+   -v var=val                 --assign=var=val
+Short options : GNU long options: (extensions)
+   -b                         --characters-as-bytes
+   -c                         --traditional
+   -C                         --copyright
+   -d[file]                   --dump-variables[=file]
+   -e 'program-text'          --source='program-text'
+   -E file                    --exec=file
+   -g                         --gen-pot
+   -h                         --help
+   -L [fatal]                 --lint[=fatal]
+   -n                         --non-decimal-data
+   -N                         --use-lc-numeric
+   -O                         --optimize
+   -p[file]                   --profile[=file]
+   -P                         --posix
+   -r                         --re-interval
+   -S                         --sandbox
+   -t                         --lint-old
+   -V                         --version
+</pre>
+<h3>The --lint[=fatal] option</h3>
+<p>This option enables checking of non-portable or dubious constructs. When an argument <b>fatal</b> is provided, it treats warning messages as errors. The following example demonstrates this −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk --lint '' /bin/ls
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+awk: cmd. line:1: warning: empty program text on command line
+awk: cmd. line:1: warning: source file does not end in newline
+awk: warning: no program text at all!
+</pre>
+<h3>The --posix option</h3>
+<p>This option turns on strict POSIX compatibility, in which all common and gawk-specific extensions are disabled.</p>
+<h3>The --profile[=file] option</h3>
+<p>This option generates a pretty-printed version of the program in file. Default file is <b>awkprof.out</b>. Below simple example illustrates this −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk --profile 'BEGIN{printf"---|Header|--\n"} {print} 
+END{printf"---|Footer|---\n"}' marks.txt &gt; /dev/null 
+[jerry]$ cat awkprof.out
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+# gawk profile, created Sun Oct 26 19:50:48 2014
+
+   # BEGIN block(s)
+
+   BEGIN {
+      printf "---|Header|--\n"
+   }
+
+   # Rule(s) {
+      print $0
+   }
+
+   # END block(s)
+
+   END {
+      printf "---|Footer|---\n"
+   }
+</pre>
+<h3>The --traditional option</h3>
+<p>This option disables all gawk-specific extensions.</p>
+<h3>The --version option</h3>
+<p>This option displays the version information of the AWK program.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk --version
+</pre>
+<p>When this code is executed, it produces the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+GNU Awk 4.0.1
+Copyright (C) 1989, 1991-2012 Free Software Foundation.
+</pre>
+<h1>AWK - Basic Examples</h1>
+<p>This chapter describes several useful AWK commands and their appropriate examples. Consider a text file <b>marks.txt</b> to be processed with the following content −</p>
+<pre class="result notranslate">
+1) Amit     Physics   80
+2) Rahul    Maths     90
+3) Shyam    Biology   87
+4) Kedar    English   85
+5) Hari     History   89
+</pre>
+<h2>Printing Column or Field</h2>
+<p>You can instruct AWK to print only certain columns from the input field. The following example demonstrates this −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '{print $3 "\t" $4}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Physics   80
+Maths     90
+Biology   87
+English   85
+History   89
+</pre>
+<p>In the file <b>marks.txt</b>, the third column contains the subject name and the fourth column contains the marks obtained in a particular subject. Let us print these two columns using AWK print command. In the above example, <b>$3 and $4</b> represent the third and the fourth fields respectively from the input record.</p>
+<h2>Printing All Lines</h2>
+<p>By default, AWK prints all the lines that match pattern.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '/a/ {print $0}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+2) Rahul    Maths     90
+3) Shyam    Biology   87
+4) Kedar    English   85
+5) Hari     History   89
+</pre>
+<p>In the above example, we are searching form pattern <b>a</b>. When a pattern match succeeds, it executes a command from the body block. In the absence of a body block − default action is taken which is print the record. Hence, the following command produces the same result −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '/a/' marks.txt
+</pre>
+<h2>Printing Columns by Pattern</h2>
+<p>When a pattern match succeeds, AWK prints the entire record by default. But you can instruct AWK to print only certain fields. For instance, the following example prints the third and fourth field when a pattern match succeeds.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '/a/ {print $3 "\t" $4}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Maths    90
+Biology  87
+English  85
+History  89
+</pre>
+<h2>Printing Column in Any Order</h2>
+<p>You can print columns in any order. For instance, the following example prints the fourth column followed by the third column.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '/a/ {print $4 "\t" $3}' marks.txt
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+90   Maths
+87   Biology
+85   English
+89   History
+</pre>
+<h2>Counting and Printing Matched Pattern</h2>
+<p>Let us see an example where you can count and print the number of lines for which a pattern match succeeded.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '/a/{++cnt} END {print "Count = ", cnt}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Count = 4
+</pre>
+<p>In this example, we increment the value of counter when a pattern match succeeds and we print this value in the END block. Note that unlike other programming languages, there is no need to declare a variable before using it.</p>
+<h2>Printing Lines with More than 18 Characters</h2>
+<p>Let us print only those lines that contain more than 18 characters.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'length($0) &gt; 18' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+3) Shyam   Biology   87
+4) Kedar   English   85
+</pre>
+<p>AWK provides a built-in <b>length</b>  function that returns the length of the string. <b>$0</b> variable stores the entire line and in the absence of a body block, default action is taken, i.e., the print action. Hence, if a line has more than 18 characters, then the comparison results true and the line gets printed.</p>
+<h1>AWK - Built-in Variables</h1>
+<p>AWK provides several built-in variables. They play an important role while writing AWK scripts. This chapter demonstrates the usage of built-in variables.</p>
+<h2>Standard AWK variables</h2>
+<p>The standard AWK variables are discussed below.</p>
+<h3>ARGC</h3>
+<p>It implies the number of arguments provided at the command line.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {print "Arguments =", ARGC}' One Two Three Four
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Arguments = 5
+</pre>
+<p>But why AWK shows 5 when you passed only 4 arguments? Just check the following example to clear your doubt.</p>
+<h3>ARGV</h3>
+<p>It is an array that stores the command-line arguments. The array's valid index ranges from 0 to ARGC-1.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   for (i = 0; i &lt; ARGC - 1; ++i) { 
+      printf "ARGV[%d] = %s\n", i, ARGV[i] 
+   } 
+}' one two three four
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+ARGV[0] = awk
+ARGV[1] = one
+ARGV[2] = two
+ARGV[3] = three
+</pre>
+<h3>CONVFMT</h3>
+<p>It represents the conversion format for numbers. Its default value is <b>%.6g</b>.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print "Conversion Format =", CONVFMT }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Conversion Format = %.6g
+</pre>
+<h3>ENVIRON</h3>
+<p>It is an associative array of environment variables.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print ENVIRON["USER"] }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+jerry
+</pre>
+<p>To find names of other environment variables, use <b>env</b> command.</p>
+<h3>FILENAME</h3>
+<p>It represents the current file name.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'END {print FILENAME}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+marks.txt
+</pre>
+<p>Please note that FILENAME is undefined in the BEGIN block.</p>
+<h3>FS</h3>
+<p>It represents the (input) field separator and its default value is space. You can also change this by using <b>-F</b> command line option.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {print "FS = " FS}' | cat -vte
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+FS =  $
+</pre>
+<h3>NF</h3>
+<p>It represents the number of fields in the current record. For instance, the following example prints only those lines that contain more than two fields.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "One Two\nOne Two Three\nOne Two Three Four" | awk 'NF &gt; 2'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+One Two Three
+One Two Three Four
+</pre>
+<h3>NR</h3>
+<p>It represents the number of the current record. For instance, the following example prints the record if the current record number is less than three.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "One Two\nOne Two Three\nOne Two Three Four" | awk 'NR &lt; 3'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+One Two
+One Two Three
+</pre>
+<h3>FNR</h3>
+<p>It is similar to NR, but relative to the current file. It is useful when AWK is operating on multiple files. Value of FNR resets with new file.</p>
+<h3>OFMT</h3>
+<p>It represents the output format number and its default value is <b>%.6g</b>.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {print "OFMT = " OFMT}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+OFMT = %.6g
+</pre>
+<h3>OFS</h3>
+<p>It represents the output field separator and its default value is space.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {print "OFS = " OFS}' | cat -vte
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+OFS =  $
+</pre>
+<h3>ORS</h3>
+<p>It represents the output record separator and its default value is newline.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {print "ORS = " ORS}' | cat -vte
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+ORS = $
+$
+</pre>
+<h3>RLENGTH</h3>
+<p>It represents the length of the string matched by <b>match</b> function. AWK's match function searches for a given string in the input-string.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { if (match("One Two Three", "re")) { print RLENGTH } }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+2
+</pre>
+<h3>RS</h3>
+<p>It represents (input) record separator and its default value is newline.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {print "RS = " RS}' | cat -vte
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+RS = $
+$
+</pre>
+<h3>RSTART</h3>
+<p>It represents the first position in the string matched by <b>match</b> function.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { if (match("One Two Three", "Thre")) { print RSTART } }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+9
+</pre>
+<h3>SUBSEP</h3>
+<p>It represents the separator character for array subscripts and its default value is <b>\034</b>.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print "SUBSEP = " SUBSEP }' | cat -vte
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+SUBSEP = ^\$
+</pre>
+<h3>$0</h3>
+<p>It represents the entire input record.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '{print $0}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+1) Amit     Physics   80
+2) Rahul    Maths     90
+3) Shyam    Biology   87
+4) Kedar    English   85
+5) Hari     History   89
+</pre>
+<h3>$n</h3>
+<p>It represents the n<sup>th</sup> field in the current record where the fields are separated by FS.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '{print $3 "\t" $4}' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Physics   80
+Maths     90
+Biology   87
+English   85
+History   89
+</pre>
+<h2>GNU AWK Specific Variables</h2>
+<p>GNU AWK specific variables are as follows −</p>
+<h3>ARGIND</h3>
+<p>It represents the index in ARGV of the current file being processed.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk '{ 
+   print "ARGIND   = ", ARGIND; print "Filename = ", ARGV[ARGIND] 
+}' junk1 junk2 junk3
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+ARGIND   =  1
+Filename =  junk1
+ARGIND   =  2
+Filename =  junk2
+ARGIND   =  3
+Filename =  junk3
+</pre>
+<h3>BINMODE</h3>
+<p>It is used to specify binary mode for all file I/O on non-POSIX systems. Numeric values of 1, 2, or 3 specify that input files, output files, or all files, respectively, should use binary I/O. String values of <b>r</b> or <b>w</b> specify that input files or output files, respectively, should use binary I/O. String values of <b>rw</b> or <b>wr</b> specify that all files should use binary I/O.</p>
+<h3>ERRNO</h3>
+<p>A string indicates an error when a redirection fails for <b>getline</b> or if <b>close</b> call fails.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { ret = getline &lt; "junk.txt"; if (ret == -1) print "Error:", ERRNO }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Error: No such file or directory
+</pre>
+<h3>FIELDWIDTHS</h3>
+<p>A space separated list of field widths variable is set, GAWK parses the input into fields of fixed width, instead of using the value of the FS variable as the field separator.</p>
+<h3>IGNORECASE</h3>
+<p>When this variable is set, GAWK becomes case-insensitive. The following example demonstrates this −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN{IGNORECASE = 1} /amit/' marks.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+1) Amit  Physics   80
+</pre>
+<h3>LINT</h3>
+<p>It provides dynamic control of the <b>--lint</b> option from the GAWK program. When this variable is set, GAWK prints lint warnings. When assigned the string value fatal, lint warnings become fatal errors, exactly like <b>--lint=fatal</b>.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {LINT = 1; a}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+awk: cmd. line:1: warning: reference to uninitialized variable `a'
+awk: cmd. line:1: warning: statement has no effect
+</pre>
+<h3>PROCINFO</h3>
+<p>This is an associative array containing information about the process, such as real and effective UID numbers, process ID number, and so on.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print PROCINFO["pid"] }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+4316
+</pre>
+<h3>TEXTDOMAIN</h3>
+<p>It represents the text domain of the AWK program. It is used to find the localized translations for the program's strings.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print TEXTDOMAIN }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+messages
+</pre>
+<p>The above output shows English text due to <b>en_IN</b> locale</p>
+<h1>AWK - Operators</h1>
+<p>Like other programming languages, AWK also provides a large set of operators. This chapter explains AWK operators with suitable examples.</p>
+<div class="table-wrapper"><table class="table table-bordered">
+<tr>
+<th>S.No.</th>
+<th style="text-align:center;">Operators &amp; Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td>
+<a href="/awk/awk_arithmetic_operators.htm">Arithmetic Operators</a>
+<p>AWK supports the following arithmetic operators.</p>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>
+<a href="/awk/awk_increment_decrement_operators.htm">Increment and Decrement Operators</a>
+<p>AWK supports the following increment and decrement operators.</p>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>
+<a href="/awk/awk_assignment_operators.htm">Assignment Operators</a>
+<p>AWK supports the following assignment operators.</p>
+</td>
+</tr>
+<tr>
+<td>4</td>
+<td>
+<a href="/awk/awk_relational_operators.htm">Relational Operators</a>
+<p>AWK supports the following relational operators.</p>
+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>
+<a href="/awk/awk_logical_operators.htm">Logical Operators</a>
+<p>AWK supports the following logical operators.</p>
+</td>
+</tr>
+<tr>
+<td>6</td>
+<td>
+<a href="/awk/awk_ternary_operators.htm">Ternary Operator</a>
+<p>We can easily implement a condition expression using ternary operator.</p>
+</td>
+</tr>
+<tr>
+<td>7</td>
+<td>
+<a href="/awk/awk_unary_operators.htm">Unary Operators</a>
+<p>AWK supports the following unary operators.</p>
+</td>
+</tr>
+<tr>
+<td>8</td>
+<td>
+<a href="/awk/awk_exponential_operators.htm">Exponential Operators</a>
+<p>There are two formats of exponential operators.</p>
+</td>
+</tr>
+<tr>
+<td>9</td>
+<td>
+<a href="/awk/awk_string_concatenation_operator.htm">String Concatenation Operator</a>
+<p>Space is a string concatenation operator that merges two strings.</p>
+</td>
+</tr>
+<tr>
+<td>10</td>
+<td>
+<a href="/awk/awk_array_membership_operator.htm">Array Membership Operator</a>
+<p>It is represented by <b>in</b>. It is used while accessing array elements.</p>
+</td>
+</tr>
+<tr>
+<td>11</td>
+<td>
+<a href="/awk/awk_regular_expression_operators.htm">Regular Expression Operators</a>
+<p>This example explains the two forms of regular expressions operators.</p>
+</td>
+</tr>
+</table></div>
+<h1>AWK - Regular Expressions</h1>
+<p>AWK is very powerful and efficient in handling regular expressions. A number of complex tasks can be solved with simple regular expressions. Any command-line expert knows the power of regular expressions.</p>
+<p>This chapter covers standard regular expressions with suitable examples.</p>
+<h2>Dot</h2>
+<p>It matches any single character except the end of line character. For instance, the following example matches <b>fin, fun, fan</b> etc.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "cat\nbat\nfun\nfin\nfan" | awk '/f.n/'
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+fun
+fin
+fan
+</pre>
+<h2>Start of line</h2>
+<p>It matches the start of line. For instance, the following example prints all the lines that start with pattern <b>The</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "This\nThat\nThere\nTheir\nthese" | awk '/^The/'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+There
+Their
+</pre>
+<h2>End of line</h2>
+<p>It matches the end of line. For instance, the following example prints the lines that end with the letter <b>n</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "knife\nknow\nfun\nfin\nfan\nnine" | awk '/n$/'
+</pre>
+<h3>Output</h3>
+<p>On executing this code, you get the following result −</p>
+<pre class="result notranslate">
+fun
+fin
+fan
+</pre>
+<h2>Match character set</h2>
+<p>It is used to match only one out of several characters. For instance, the following example matches pattern <b>Call</b> and <b>Tall</b> but not <b>Ball</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "Call\nTall\nBall" | awk '/[CT]all/'
+</pre>
+<h3>Output</h3>
+<p>On executing this code, you get the following result −</p>
+<pre class="result notranslate">
+Call
+Tall
+</pre>
+<h2>Exclusive set</h2>
+<p>In exclusive set, the carat negates the set of characters in the square brackets. For instance, the following example prints only <b>Ball</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "Call\nTall\nBall" | awk '/[^CT]all/'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Ball
+</pre>
+<h2>Alteration</h2>
+<p>A vertical bar allows regular expressions to be logically ORed. For instance, the following example prints <b>Ball</b> and <b>Call</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "Call\nTall\nBall\nSmall\nShall" | awk '/Call|Ball/'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Call
+Ball
+</pre>
+<h2>Zero or One Occurrence</h2>
+<p>It matches zero or one occurrence of the preceding character. For instance, the following example matches <b>Colour</b> as well as <b>Color</b>. We have made <b>u</b> as an optional character by using <b>?</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "Colour\nColor" | awk '/Colou?r/'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Colour
+Color
+</pre>
+<h2>Zero or More Occurrence</h2>
+<p>It matches zero or more occurrences of the preceding character. For instance, the following example matches <b>ca, cat, catt,</b> and so on.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "ca\ncat\ncatt" | awk '/cat*/'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+ca
+cat
+catt
+</pre>
+<h2>One or More Occurrence</h2>
+<p>It matches one or more occurrence of the preceding character. For instance below example matches one or more occurrences of the <b>2</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "111\n22\n123\n234\n456\n222"  | awk '/2+/'
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+22
+123
+234
+222
+</pre>
+<h2>Grouping</h2>
+<p><b>Parentheses ()</b> are used for grouping and the character | is used for alternatives. For instance, the following regular expression matches the lines containing either <b>Apple Juice or Apple Cake</b>.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo -e "Apple Juice\nApple Pie\nApple Tart\nApple Cake" | awk 
+   '/Apple (Juice|Cake)/'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Apple Juice
+Apple Cake
+</pre>
+<h1>AWK - Arrays</h1>
+<p>AWK has associative arrays and one of the best thing about it is  the indexes need not to be continuous set of number; you can use either string or number as an array index. Also, there is no need to declare the size of an array in advance  arrays can expand/shrink at runtime.</p>
+<p>Its syntax is as follows −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+array_name[index] = value
+</pre>
+<p>Where <b>array_name</b> is the name of array, <b>index</b> is the array index, and <b>value</b> is any value assigning to the element of the array.</p>
+<h2>Creating Array</h2>
+<p>To gain more insight on array, let us create and access the elements of an array.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   fruits["mango"] = "yellow";
+   fruits["orange"] = "orange"
+   print fruits["orange"] "\n" fruits["mango"]
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+orange
+yellow
+</pre>
+<p>In the above example, we declare the array as <b>fruits</b> whose index is fruit name and the value is the color of the fruit. To access array elements, we use <b>array_name[index]</b> format.</p>
+<h2>Deleting Array Elements</h2>
+<p>For insertion, we used assignment operator. Similarly, we can use <b>delete</b> statement to remove an element from the array. The syntax of delete statement is as follows −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+delete array_name[index]
+</pre>
+<p>The following example deletes the element <b>orange</b>. Hence the command does not show any output.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   fruits["mango"] = "yellow";
+   fruits["orange"] = "orange";
+   delete fruits["orange"];
+   print fruits["orange"]
+}'
+</pre>
+<h2>Multi-Dimensional arrays</h2>
+<p>AWK only supports one-dimensional arrays. But you can easily simulate a multi-dimensional array using the one-dimensional array itself.</p>
+<p>For instance, given below is a 3x3 two-dimensional array −</p>
+<pre class="result notranslate">
+100   200   300
+400   500   600
+700   800   900
+</pre>
+<p>In the above example, array[0][0] stores 100, array[0][1] stores 200, and so on. To store 100 at array location [0][0], we can use the following syntax −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+array["0,0"] = 100
+</pre>
+<p>Though we gave <b>0,0</b> as index, these are not two indexes. In reality, it is just one index with the string <b>0,0</b>.</p>
+<p>The following example simulates a 2-D array −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   array["0,0"] = 100;
+   array["0,1"] = 200;
+   array["0,2"] = 300;
+   array["1,0"] = 400;
+   array["1,1"] = 500;
+   array["1,2"] = 600;
+
+   # print array elements
+   print "array[0,0] = " array["0,0"];
+   print "array[0,1] = " array["0,1"];
+   print "array[0,2] = " array["0,2"];
+   print "array[1,0] = " array["1,0"];
+   print "array[1,1] = " array["1,1"];
+   print "array[1,2] = " array["1,2"];
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+array[0,0] = 100
+array[0,1] = 200
+array[0,2] = 300
+array[1,0] = 400
+array[1,1] = 500
+array[1,2] = 600
+</pre>
+<p>You can also perform a variety of operations on an array such as sorting its elements/indexes. For that purpose, you can use <b>assort</b> and <b>asorti</b> functions</p>
+<h1>AWK - Control Flow</h1>
+<p>Like other programming languages, AWK provides conditional statements to control the flow of a program. This chapter explains AWK's control statements with suitable examples.</p>
+<h2>If statement</h2>
+<p>It simply tests the condition and performs certain actions depending upon the condition. Given below is the syntax of <b>if</b> statement −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+if (condition)
+   action
+</pre>
+<p>We can also use a pair of curly braces as given below to execute multiple actions −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+if (condition) {
+   action-1
+   action-1
+   .
+   .
+   action-n
+}
+</pre>
+<p>For instance, the following example checks whether a number is even or not −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {num = 10; if (num % 2 == 0) printf "%d is even number.\n", num }'
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+10 is even number.
+</pre>
+<h2>If Else Statement</h2>
+<p>In <b>if-else</b> syntax, we can provide a list of actions to be performed when a condition becomes false.</p>
+<p>The syntax of <b>if-else</b> statement is as follows −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+if (condition)
+   action-1
+else
+   action-2
+</pre>
+<p>In the above syntax, action-1 is performed when the condition evaluates to true and action-2 is performed when the condition evaluates to false. For instance, the following example checks whether a number is even or not −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   num = 11; if (num % 2 == 0) printf "%d is even number.\n", num; 
+      else printf "%d is odd number.\n", num 
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+11 is odd number.
+</pre>
+<h2>If-Else-If Ladder</h2>
+<p>We can easily create an <b>if-else-if</b> ladder by using multiple <b>if-else</b> statements. The following example demonstrates this −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   a = 30;
+   
+   if (a==10)
+   print "a = 10";
+   else if (a == 20)
+   print "a = 20";
+   else if (a == 30)
+   print "a = 30";
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+a = 30
+</pre>
+<h1>AWK - Loops</h1>
+<p>This chapter explains AWK's loops with suitable example. Loops are used to execute a set of actions in a repeated manner. The loop execution continues as long as the loop condition is true.</p>
+<h2>For Loop</h2>
+<p>The syntax of <b>for</b> loop is −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+for (initialization; condition; increment/decrement)
+   action
+</pre>
+<p>Initially, the <b>for</b> statement performs initialization action, then it checks the condition. If the condition is true, it executes actions, thereafter it performs increment or decrement operation. The loop execution continues as long as the condition is true. For instance, the following example prints 1 to 5 using <b>for</b> loop −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { for (i = 1; i &lt;= 5; ++i) print i }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+1
+2
+3
+4
+5
+</pre>
+<h2>While Loop</h2>
+<p>The <b>while</b> loop keeps executing the action until a particular logical condition evaluates to true. Here is the syntax of <b>while</b> loop −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+while (condition)
+   action
+</pre>
+<p>AWK first checks the condition; if the condition is true, it executes the action. This process repeats as long as the loop condition evaluates to true. For instance, the following example prints 1 to 5 using <b>while</b> loop −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {i = 1; while (i &lt; 6) { print i; ++i } }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+1
+2
+3
+4
+5
+</pre>
+<h2>Do-While Loop</h2>
+<p>The <b>do-while</b> loop is similar to the while loop, except that the test condition is evaluated at the end of the loop. Here is the syntax of <b>do-while</b>loop −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+do
+   action
+while (condition)
+</pre>
+<p>In a <b>do-while</b> loop, the action statement gets executed at least once even when the condition statement evaluates to false. For instance, the following example prints 1 to 5 numbers using <b>do-while</b> loop −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {i = 1; do { print i; ++i } while (i &lt; 6) }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+1
+2
+3
+4
+5
+</pre>
+<h2>Break Statement</h2>
+<p>As its name suggests, it is used to end the loop execution. Here is an example which ends the loop when the sum becomes greater than 50.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   sum = 0; for (i = 0; i &lt; 20; ++i) { 
+      sum += i; if (sum &gt; 50) break; else print "Sum =", sum 
+   } 
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Sum = 0
+Sum = 1
+Sum = 3
+Sum = 6
+Sum = 10
+Sum = 15
+Sum = 21
+Sum = 28
+Sum = 36
+Sum = 45
+</pre>
+<h2>Continue Statement</h2>
+<p>The <b>continue</b> statement is used inside a loop to skip to the next iteration of the loop. It is useful when you wish to skip the processing of some data inside the loop. For instance, the following example uses <b>continue</b> statement to print the even numbers between 1 to 20.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   for (i = 1; i &lt;= 20; ++i) {
+      if (i % 2 == 0) print i ; else continue
+   } 
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+</pre>
+<h2>Exit Statement</h2>
+<p>It is used to stop the execution of the script. It accepts an integer as an argument which is the exit status code for AWK process. If no argument is supplied, <b>exit</b> returns status zero. Here is an example that stops the execution when the sum becomes greater than 50.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN {
+   sum = 0; for (i = 0; i &lt; 20; ++i) {
+      sum += i; if (sum &gt; 50) exit(10); else print "Sum =", sum 
+   } 
+}'
+</pre>
+<h3>Output</h3>
+<p>On executing this code, you get the following result −</p>
+<pre class="result notranslate">
+Sum = 0
+Sum = 1
+Sum = 3
+Sum = 6
+Sum = 10
+Sum = 15
+Sum = 21
+Sum = 28
+Sum = 36
+Sum = 45
+</pre>
+<p>Let us check the return status of the script.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo $?
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+10
+</pre>
+<h1>AWK - Built-in Functions</h1>
+<p>AWK has a number of functions built into it that are always available to the programmer. This chapter describes Arithmetic, String, Time, Bit manipulation, and other miscellaneous functions with suitable examples.</p>
+<div class="table-wrapper"><table class="table table-bordered">
+<tr>
+<th>S.No.</th>
+<th style="text-align:center;">Built in functions &amp; Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td>
+<a href="/awk/awk_arithmetic_functions.htm">Arithmetic Functions</a>
+<p>AWK has the following built-in arithmetic functions.</p>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>
+<a href="/awk/awk_string_functions.htm">String Functions</a>
+<p>AWK has the following built-in String functions.</p>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>
+<a href="/awk/awk_time_functions.htm">Time Functions</a>
+<p>AWK has the following built-in time functions.</p>
+</td>
+</tr>
+<tr>
+<td>4</td>
+<td>
+<a href="/awk/awk_bit_manipulation_functions.htm">Bit Manipulation Functions</a>
+<p>AWK has the following built-in bit manipulation functions.</p>
+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>
+<a href="/awk/awk_miscellaneous_functions.htm">Miscellaneous Functions</a>
+<p>AWK has the following miscellaneous functions.</p>
+</td>
+</tr>
+</table></div>
+<h1>AWK - User Defined Functions</h1>
+<p>Functions are basic building blocks of a program. AWK allows us to define our own functions. A large program can be divided into functions and each function can be written/tested independently. It provides re-usability of code.</p>
+<p>Given below is the general format of a user-defined function −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+function function_name(argument1, argument2, ...) { 
+   function body
+}
+</pre>
+<p>In this syntax, the<b> function_name</b> is the name of the user-defined function. Function name should begin with a letter and the rest of the characters can be any combination of numbers, alphabetic characters, or underscore. AWK's reserve words cannot be used as function names.</p>
+<p>Functions can accept multiple arguments separated by comma. Arguments are not mandatory. You can also create a user-defined function without any argument.</p>
+<p><b>function body</b> consists of one or more AWK statements.</p>
+<p>Let us write two functions that calculate the minimum and the maximum number and call these functions from another function called <b>main</b>. The <b>functions.awk</b> file contains −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+# Returns minimum number
+function find_min(num1, num2){
+   if (num1 &lt; num2)
+   return num1
+   return num2
+}
+# Returns maximum number
+function find_max(num1, num2){
+   if (num1 &gt; num2)
+   return num1
+   return num2
+}
+# Main function
+function main(num1, num2){
+   # Find minimum number
+   result = find_min(10, 20)
+   print "Minimum =", result
+  
+   # Find maximum number
+   result = find_max(10, 20)
+   print "Maximum =", result
+}
+# Script execution starts here
+BEGIN {
+   main(10, 20)
+}
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Minimum = 10
+Maximum = 20
+</pre>
+<h1>AWK - Output Redirection</h1>
+<p>So far, we displayed data on standard output stream. We can also redirect data to a file. A redirection appears after the <b>print</b> or <b>printf</b> statement. Redirections in AWK are written just like redirection in shell commands, except that they are written inside the AWK program. This chapter explains redirection with suitable examples.</p>
+<h2>Redirection Operator</h2>
+<p>The syntax of the redirection operator is −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+print DATA &gt; output-file
+</pre>
+<p>It writes the data into the <b>output-file</b>. If the output-file does not exist, then it creates one. When this type of redirection is used, the output-file is erased before the first output is written to it. Subsequent write operations to the same output-file do not erase the output-file, but append to it. For instance, the following example writes <b>Hello, World !!!</b> to the file.</p>
+<p>Let us create a file with some text data.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo "Old data" &gt; /tmp/message.txt
+[jerry]$ cat /tmp/message.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Old data
+</pre>
+<p>Now let us redirect some contents into it using AWK's redirection operator.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print "Hello, World !!!" &gt; "/tmp/message.txt" }'
+[jerry]$ cat /tmp/message.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Hello, World !!!
+</pre>
+<h2>Append Operator</h2>
+<p>The syntax of append operator is as follows −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+print DATA &gt;&gt; output-file
+</pre>
+<p>It appends the data into the <b>output-file</b>. If the output-file does not exist, then it creates one. When this type of redirection is used, new contents are appended at the end of file. For instance, the following example appends <b>Hello, World !!!</b> to the file.</p>
+<p>Let us create a file with some text data.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ echo "Old data" &gt; /tmp/message.txt 
+[jerry]$ cat /tmp/message.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Old data
+</pre>
+<p>Now let us append some contents to it using AWK's append operator.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print "Hello, World !!!" &gt;&gt; "/tmp/message.txt" }'
+[jerry]$ cat /tmp/message.txt
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+Old data
+Hello, World !!!
+</pre>
+<h2>Pipe</h2>
+<p>It is possible to send output to another program through a pipe instead of using a file. This redirection opens a pipe to command, and writes the values of items through this pipe to another process to execute the command. The redirection argument command is actually an AWK expression. Here is the syntax of pipe −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+print items | command
+</pre>
+<p>Let us use <b>tr</b> command to convert lowercase letters to uppercase.</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { print "hello, world !!!" | "tr [a-z] [A-Z]" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+HELLO, WORLD !!!
+</pre>
+<h2>Two way communication</h2>
+<p>AWK can communicate to an external process using <b>|&amp;</b>, which is two-way communication. For instance, the following example uses <b>tr</b> command to convert lowercase letters to uppercase. Our <b>command.awk</b> file contains −</p>
+<h3>Example</h3>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+BEGIN {
+   cmd = "tr [a-z] [A-Z]"
+   print "hello, world !!!" |&amp; cmd
+   close(cmd, "to")
+   
+   cmd |&amp; getline out
+   print out;
+   close(cmd);
+}
+</pre>
+<p>On executing this code, you get the following result −</p>
+<h3>Output</h3>
+<pre class="result notranslate">
+HELLO, WORLD !!!
+</pre>
+<p>Does the script look cryptic? Let us demystify it.</p>
+<ul class="list">
+<li><p>The first statement, <b>cmd = "tr [a-z] [A-Z]"</b>, is the command to which we establish the two-way communication from AWK.</p></li>
+<li><p>The next statement, i.e., the print command provides input to the <b>tr</b> command. Here <b>&amp;|</b> indicates two-way communication.</p></li>
+<li><p>The third statement, i.e., <b>close(cmd, "to")</b>, closes the <b>to</b> process after competing its execution.</p></li>
+<li><p>The next statement <b>cmd |&amp; getline out</b> stores the <b>output</b> into out variable with the aid of getline function.</p></li>
+<li><p>The next print statement prints the output and finally the <b>close</b> function closes the command.</p></li>
+</ul>
+<h1>AWK - Pretty Printing</h1>
+<p>So far we have used AWK's <b>print</b> and <b>printf</b> functions to display data on standard output. But printf is much more powerful than what we have seen before. This function is borrowed from the C language and is very helpful while producing formatted output. Below is the syntax of the printf statement −</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">
+printf fmt, expr-list
+</pre>
+<p>In the above syntax <b>fmt</b> is a string of format specifications and constants. <b>expr-list</b> is a list of arguments corresponding to format specifiers.</p>
+<h2>Escape Sequences</h2>
+<p>Similar to any string, format can contain embedded escape sequences. Discussed below are the escape sequences supported by AWK −</p>
+<h3>New Line</h3>
+<p>The following example prints <b>Hello</b> and <b>World</b> in separate lines using newline character −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Hello\nWorld\n" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Hello
+World
+</pre>
+<h3>Horizontal Tab</h3>
+<p>The following example uses horizontal tab to display different field −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Sr No\tName\tSub\tMarks\n" }'
+</pre>
+<p>On executing the above code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Sr No   Name    Sub Marks
+</pre>
+<h3>Vertical Tab</h3>
+<p>The following example uses vertical tab after each filed −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Sr No\vName\vSub\vMarks\n" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Sr No
+   Name
+      Sub
+         Marks
+</pre>
+<h3>Backspace</h3>
+<p>The following example prints a backspace after every field except the last one. It erases the last number from the first three fields. For instance, <b>Field 1</b> is displayed as <b>Field</b>, because the last character is erased with backspace. However, the last field <b>Field 4</b> is displayed as it is, as we did not have a <b>\b</b> after <b>Field 4</b>.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Field 1\bField 2\bField 3\bField 4\n" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Field Field Field Field 4
+</pre>
+<h3>Carriage Return</h3>
+<p>In the following example, after printing every field, we do a <b>Carriage Return </b>and print the next value on top of the current printed value. It means, in the final output, you can see only <b>Field 4</b>, as it was the last thing to be printed on top of all the previous fields.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Field 1\rField 2\rField 3\rField 4\n" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Field 4
+</pre>
+<h3>Form Feed</h3>
+<p>The following example uses form feed after printing each field.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Sr No\fName\fSub\fMarks\n" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Sr No
+   Name
+      Sub
+         Marks
+</pre>
+<h2>Format Specifier</h2>
+<p>As in C-language, AWK also has format specifiers. The AWK version of the printf statement accepts the following conversion specification formats −</p>
+<h3>%c</h3>
+<p>It prints a single character. If the argument used for <b>%c</b> is numeric, it is treated as a character and printed. Otherwise, the argument is assumed to be a string, and the only first character of that string is printed.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "ASCII value 65 = character %c\n", 65 }'
+</pre>
+<p><b>Output</b></p>
+<p>On executing this code, you get the following result −</p>
+<pre class="result notranslate">
+ASCII value 65 = character A
+</pre>
+<h3>%d and %i</h3>
+<p>It prints only the integer part of a decimal number.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %d\n", 80.66 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Percentags = 80
+</pre>
+<h3>%e and %E</h3>
+<p>It prints a floating point number of the form [-]d.dddddde[+-]dd.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %E\n", 80.66 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Percentags = 8.066000e+01
+</pre>
+<p>The <b>%E</b> format uses <b>E</b> instead of e.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %e\n", 80.66 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Percentags = 8.066000E+01
+</pre>
+<h3>%f</h3>
+<p>It prints a floating point number of the form [-]ddd.dddddd.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %f\n", 80.66 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Percentags = 80.660000
+</pre>
+<h3>%g and %G</h3>
+<p>Uses %e or %f conversion, whichever is shorter, with non-significant zeros suppressed.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %g\n", 80.66 }'
+</pre>
+<p><b>Output</b></p>
+<p>On executing this code, you get the following result −</p>
+<pre class="result notranslate">
+Percentags = 80.66
+</pre>
+<p>The <b>%G</b> format uses <b>%E</b> instead of %e.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %G\n", 80.66 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Percentags = 80.66
+</pre>
+<h3>%o</h3>
+<p>It prints an unsigned octal number.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Octal representation of decimal number 10 = %o\n", 10}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Octal representation of decimal number 10 = 12
+</pre>
+<h3>%u</h3>
+<p>It prints an unsigned decimal number.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Unsigned 10 = %u\n", 10 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Unsigned 10 = 10
+</pre>
+<h3>%s</h3>
+<p>It prints a character string.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Name = %s\n", "Sherlock Holmes" }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Name = Sherlock Holmes
+</pre>
+<h3>%x and %X</h3>
+<p>It prints an unsigned hexadecimal number. The <b>%X</b> format uses uppercase letters instead of lowercase.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   printf "Hexadecimal representation of decimal number 15 = %x\n", 15
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Hexadecimal representation of decimal number 15 = f
+</pre>
+<p>Now let use %X and observe the result −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   printf "Hexadecimal representation of decimal number 15 = %X\n", 15
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Hexadecimal representation of decimal number 15 = F
+</pre>
+<h3>%%</h3>
+<p>It prints a single <b>%</b> character and no argument is converted.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { printf "Percentags = %d%%\n", 80.66 }'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Percentags = 80%
+</pre>
+<h2>Optional Parameters with %</h2>
+<p>With <b>%</b> we can use following optional parameters −</p>
+<h3>Width</h3>
+<p>The field is padded to the <b>width</b>. By default, the field is padded with spaces but when 0 flag is used, it is padded with zeroes.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   num1 = 10; num2 = 20; printf "Num1 = %10d\nNum2 = %10d\n", num1, num2 
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Num1 =         10
+Num2 =         20
+</pre>
+<h3>Leading Zeros</h3>
+<p>A leading zero acts as a flag, which indicates that the output should be padded with zeroes instead of spaces. Please note that this flag only has an effect when the field is wider than the value to be printed. The following example describes this −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   num1 = -10; num2 = 20; printf "Num1 = %05d\nNum2 = %05d\n", num1, num2 
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Num1 = -0010
+Num2 = 00020
+</pre>
+<h3>Left Justification</h3>
+<p>The expression should be left-justified within its field. When the input-string is less than the number of characters specified, and you want it to be left justified, i.e., by adding spaces to the right, use a minus symbol () immediately after the % and before the number.</p>
+<p>In the following example, output of the AWK command is piped to the cat command to display the END OF LINE($) character.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { num = 10; printf "Num = %-5d\n", num }' | cat -vte
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Num = 10   $
+</pre>
+<h3>Prefix Sign</h3>
+<p>It always prefixes numeric values with a sign, even if the value is positive.</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   num1 = -10; num2 = 20; printf "Num1 = %+d\nNum2 = %+d\n", num1, num2 
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Num1 = -10
+Num2 = +20
+</pre>
+<h3>Hash</h3>
+<p>For %o, it supplies a leading zero. For %x and %X, it supplies a leading 0x or 0X respectively, only if the result is non-zero. For %e, %E, %f, and %F, the result always contains a decimal point. For %g and %G, trailing zeros are not removed from the result. The following example describes this −</p>
+<p><b>Example</b></p>
+<pre class="just-code notranslate language-bash" data-lang="awk">
+[jerry]$ awk 'BEGIN { 
+   printf "Octal representation = %#o\nHexadecimal representaion = %#X\n", 10, 10
+}'
+</pre>
+<p>On executing this code, you get the following result −</p>
+<p><b>Output</b></p>
+<pre class="result notranslate">
+Octal representation = 012
+Hexadecimal representation = 0XA
+</pre>
+<div class="library-page-bottom-nav ">
+   <div class="button button--blue" id="print-page">
+    <svg fill="white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M112 160V64c0-8.8 7.2-16 16-16H357.5c4.2 0 8.3 1.7 11.3 4.7l26.5 26.5c3 3 4.7 7.1 4.7 11.3V160h48V90.5c0-17-6.7-33.3-18.7-45.3L402.7 18.7C390.7 6.7 374.5 0 357.5 0H128C92.7 0 64 28.7 64 64v96h48zm16 208H384v96H128V368zm-16-48c-17.7 0-32 14.3-32 32H48V256c0-8.8 7.2-16 16-16H448c8.8 0 16 7.2 16 16v96H432c0-17.7-14.3-32-32-32H112zm320 80h48c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64V368c0 17.7 14.3 32 32 32H80v80c0 17.7 14.3 32 32 32H400c17.7 0 32-14.3 32-32V400z"/></svg>
+      Print Page
+   </div>
+   <div class="flex-group">
+   <a href="/awk/awk_pretty_printing.htm">
+   <div class="button button--neutral">
+   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none"><path d="M1.03117 8.48836C0.64065 8.09783 0.64065 7.46467 1.03117 7.07414L7.39514 0.710183C7.78566 0.319658 8.41883 0.319658 8.80935 0.710183C9.19987 1.10071 9.19987 1.73387 8.80935 2.1244L3.15249 7.78125L8.80935 13.4381C9.19987 13.8286 9.19987 14.4618 8.80935 14.8523C8.41882 15.2428 7.78566 15.2428 7.39513 14.8523L1.03117 8.48836ZM3.12109 8.78125L1.73828 8.78125L1.73828 6.78125L3.12109 6.78125L3.12109 8.78125Z" fill="black" /></svg>
+      Previous
+   </div>
+   </a>
+   <a href="/awk/awk_useful_resources.htm">
+   <div class="button ">Next
+   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none"><path
+   d="M8.87117 8.48836C9.26169 8.09783 9.26169 7.46467 8.87117 7.07414L2.50721 0.710183C2.11668 0.319658 1.48352 0.319658 1.09299 0.710183C0.70247 1.10071 0.70247 1.73387 1.09299 2.1244L6.74985 7.78125L1.093 13.4381C0.702471 13.8286 0.702471 14.4618 1.093 14.8523C1.48352 15.2428 2.11668 15.2428 2.50721 14.8523L8.87117 8.48836ZM6.78125 8.78125L8.16406 8.78125L8.16406 6.78125L6.78125 6.78125L6.78125 8.78125Z" fill="white" /></svg>
+   </div>
+   </a>
+   </div>
+</div>
+   <div class="bottom-library-ads mt"  style="margin:5px;">
+      <div class="google-bottom-ads" id="google-bottom-ads">
+         <div>Advertisements</div>
+                    <div style="width: 728px; height: 250px;">
+                <ins class="undrads ua-display" data-ad-id="UNDR/2358294094/adunit/desktop/728X250/a27bc5b6-536e-4adb-b117-8337f2173bca"></ins>
+           </div>
+                 </div>
+   </div>
+   </div>
+   <div>
+         <div class="data-sticky" id="google-right-ads">
+        <div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;min-height:280px!important">
+            <ins class="undrads ua-display" data-ad-id="UNDR/2358294094/adunit/desktop/336X280/20bbb735-f3c0-44b6-aa62-01a1463694e2"></ins>
+        </div>
+        <div class="google-right-ad" style="margin-top:16px;min-height:280px!important">
+            <ins class="undrads ua-display" data-ad-id="UNDR/2358294094/adunit/desktop/336X280/3d28e09d-ddd5-45d8-8f07-9b3a247b7938"></ins>
+        </div>
+        <div class="google-right-ad" style="margin-top:16px;min-height:280px!important">
+            <ins class="undrads ua-display" data-ad-id="UNDR/2358294094/adunit/desktop/336X280/44828975-6f36-4624-b80f-c9b2add8a834"></ins>
+        </div>
+      </div>
+     </div>
+   </div>
+</div>
+</div>
+</main>
+<footer class="bg-neutral-800 text-sm">
+      <div class="container mx-auto px-4 py-12">
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:justify-items-center gap-8">
+            <div>
+               <h2 class="text-white font-bold text-base mb-4">TOP TUTORIALS</h2>
+               <ul class="space-y-2">
+                  <li><a href="/python/index.htm" class="text-gray-300 hover:text-white">Python Tutorial</a></li>
+                  <li><a href="/java/index.htm" class="text-gray-300 hover:text-white">Java Tutorial</a></li>
+                  <li><a href="/cplusplus/index.htm" class="text-gray-300 hover:text-white">C++ Tutorial</a></li>
+                  <li><a href="/cprogramming/index.htm" class="text-gray-300 hover:text-white">C Programming
+                        Tutorial</a></li>
+                  <li><a href="/csharp/index.htm" class="text-gray-300 hover:text-white">C# Tutorial</a></li>
+                  <li><a href="/php/index.htm" class="text-gray-300 hover:text-white">PHP Tutorial</a></li>
+                  <li><a href="/r/index.htm" class="text-gray-300 hover:text-white">R Tutorial</a></li>
+                  <li><a href="/html/index.htm" class="text-gray-300 hover:text-white">HTML Tutorial</a></li>
+                  <li><a href="/css/index.htm" class="text-gray-300 hover:text-white">CSS Tutorial</a></li>
+                  <li><a href="/javascript/index.htm" class="text-gray-300 hover:text-white">JavaScript Tutorial</a>
+                  </li>
+                  <li><a href="/sql/index.htm" class="text-gray-300 hover:text-white">SQL Tutorial</a></li>
+               </ul>
+            </div>
+
+            <div>
+               <h2 class="text-white font-bold text-base mb-4">TRENDING TECHNOLOGIES</h2>
+               <ul class="space-y-2">
+                  <li><a href="/cloud_computing/index.htm" class="text-gray-300 hover:text-white">Cloud Computing
+                        Tutorial</a></li>
+                  <li><a href="/amazon_web_services/index.htm" class="text-gray-300 hover:text-white">Amazon Web
+                        Services Tutorial</a></li>
+                  <li><a href="/microsoft_azure/index.htm" class="text-gray-300 hover:text-white">Microsoft Azure
+                        Tutorial</a></li>
+                  <li><a href="/git/index.htm" class="text-gray-300 hover:text-white">Git Tutorial</a></li>
+                  <li><a href="/ethical_hacking/index.htm" class="text-gray-300 hover:text-white">Ethical Hacking
+                        Tutorial</a></li>
+                  <li><a href="/docker/index.htm" class="text-gray-300 hover:text-white">Docker Tutorial</a></li>
+                  <li><a href="/kubernetes/index.htm" class="text-gray-300 hover:text-white">Kubernetes Tutorial</a>
+                  </li>
+                  <li><a href="/data_structures_algorithms/index.htm" class="text-gray-300 hover:text-white">DSA
+                        Tutorial</a></li>
+                  <li><a href="/spring_boot/index.htm" class="text-gray-300 hover:text-white">Spring Boot Tutorial</a>
+                  </li>
+                  <li><a href="/sdlc/index.htm" class="text-gray-300 hover:text-white">SDLC Tutorial</a></li>
+                  <li><a href="/unix/index.htm" class="text-gray-300 hover:text-white">Unix Tutorial</a></li>
+               </ul>
+            </div>
+
+            <div>
+               <h2 class="text-white font-bold text-base mb-4">CERTIFICATIONS</h2>
+               <ul class="space-y-2">
+                  <li><a href="https://market.tutorialspoint.com/certification/business-analytics-certification-2023/index.asp"
+                        class="text-gray-300 hover:text-white">Business Analytics Certification</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/java-prime-pack/index.asp" class="text-gray-300 hover:text-white">Java &
+                        Spring Boot Advanced Certification</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/data-science-advanced-certification/index.asp"
+                        class="text-gray-300 hover:text-white">Data Science Advanced Certification</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/cloud-computing-and-devops-advanced-certification/index.asp"
+                        class="text-gray-300 hover:text-white">Cloud Computing And DevOps</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/advanced-certification-in-business-analytics/index.asp"
+                        class="text-gray-300 hover:text-white">Advanced Certification In Business Analytics</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/artificial-intelligence-and-machine-learning-certification/index.asp"
+                        class="text-gray-300 hover:text-white">Artificial Intelligence And Machine Learning</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/devops-certification/index.asp"
+                        class="text-gray-300 hover:text-white">DevOps Certification</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/game-development-prime-pack/index.asp"
+                        class="text-gray-300 hover:text-white">Game Development Certification</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/frontend-developer-certification/index.asp"
+                        class="text-gray-300 hover:text-white">Front-End Developer Certification</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/aws-prime-pack/index.asp" class="text-gray-300 hover:text-white">AWS
+                        Certification Training</a></li>
+                  <li><a href="https://market.tutorialspoint.com/certification/complete-python-prime-pack/index.asp"
+                        class="text-gray-300 hover:text-white">Python Programming Certification</a></li>
+               </ul>
+            </div>
+
+            <div>
+               <h2 class="text-white font-bold text-base mb-4">COMPILERS & EDITORS</h2>
+               <ul class="space-y-2">
+                    <li><a href="/compilers/online-java-compiler.htm" class="text-gray-300 hover:text-white" title="Online Java Compiler">Online Java Compiler</a></li>
+                    <li><a href="/compilers/online-python-compiler.htm" class="text-gray-300 hover:text-white" title="Online Python Compiler">Online Python Compiler</a></li>
+                    <li><a href="/compilers/online-golang-compiler.htm" class="text-gray-300 hover:text-white" title="Online Go Compiler">Online Go Compiler</a></li>
+                    <li><a href="/compilers/online-c-compiler.htm" class="text-gray-300 hover:text-white" title="Online C Compiler">Online C Compiler</a></li>
+                    <li><a href="/compilers/online-cpp-compiler.htm" class="text-gray-300 hover:text-white" title="Online C++ Compiler">Online C++ Compiler</a></li>
+                    <li><a href="/compilers/online-csharp-compiler.htm" class="text-gray-300 hover:text-white" title="Online C# Compiler">Online C# Compiler</a></li>
+                    <li><a href="/compilers/online-php-compiler.htm" class="text-gray-300 hover:text-white" title="Online PHP Compiler">Online PHP Compiler</a></li>
+                    <li><a href="/compilers/online-matlab-compiler.htm" class="text-gray-300 hover:text-white" title="Online MATLAB Compiler">Online MATLAB Compiler</a></li>
+                    <li><a href="/compilers/online-bash-terminal.htm" class="text-gray-300 hover:text-white" title="Online Bash Compiler">Online Bash Compiler</a></li>
+                    <li><a href="/compilers/online-sql-editor.htm" class="text-gray-300 hover:text-white" title="Online SQL Compiler">Online SQL Compiler</a></li>
+                    <li><a href="/compilers/online-html-editor.htm" class="text-gray-300 hover:text-white" title="Online Html Editor">Online Html Editor</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <ul class="footer-links flex text-xs flex-wrap justify-center gap-x-2 text-gray-300 mt-10 mb-6">
+           <li><a href="/about/index.htm" class="hover:text-white">ABOUT US</a></li>
+           <li><a href="/about/about_team.htm" class="hover:text-white">OUR TEAM</a></li>
+           <li><a href="/about/about_careers.htm" class="hover:text-white">CAREERS</a></li>
+           <li><a href="/job_search.php" class="hover:text-white">JOBS</a></li>
+           <li><a href="/about/contact_us.htm" class="hover:text-white">CONTACT US</a></li>
+           <li><a href="/about/about_terms_of_use.htm" class="hover:text-white">TERMS OF USE</a></li>
+           <li><a href="/about/about_privacy.htm" class="hover:text-white">PRIVACY POLICY</a></li>
+           <li><a href="/about/return_refund_policy.htm" class="hover:text-white">REFUND POLICY</a></li>
+           <li><a href="/about/about_cookies.htm" class="hover:text-white">COOKIES POLICY</a></li>
+           <li><a href="/about/faq.htm" class="hover:text-white">FAQ'S</a></li>
+         </ul>
+
+         <div class="flex flex-col md:flex-row items-center justify-center gap-8 py-6 border-t border-gray-700">
+            <img class="h-8 mb-4 md:mb-0" src="https://www.tutorialspoint.com/static/images/logo-footer.svg" loading="lazy" alt="tutorials point logo">
+
+            <div class="flex space-x-6 mb-4 md:mb-0">
+               <a rel="nofollow" target="_blank" href="https://www.facebook.com/tutorialspointindia" class="text-gray-400 hover:text-white" aria-label="Facebook">
+                  <i class="!size-7 fa-brands fa-facebook-f"></i>
+               </a>
+               <a target="_blank" href="https://twitter.com/tutorialspoint" rel="nofollow" class="text-gray-400 hover:text-white" aria-label="Twitter">
+                  <i class="!size-7 fa-brands fa-x-twitter"></i>
+               </a>
+               <a target="_blank" href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" rel="nofollow" class="text-gray-400 hover:text-white" aria-label="YouTube">
+                  <i class="!size-7 fa-brands fa-youtube"></i>
+               </a>
+               <a target="_blank" href="https://www.linkedin.com/company/tutorialspoint/" rel="nofollow" class="text-gray-400 hover:text-white" aria-label="Linkedin">
+                  <i class="!size-7 fa-brands fa-linkedin-in"></i>
+               </a>
+               <a target="_blank" href="https://www.instagram.com/tutorialspoint_/" rel="nofollow" class="text-gray-400 hover:text-white" aria-label="Instagram">
+                  <i class="!size-7 fa-brands fa-instagram"></i>
+               </a>
+            </div>
+
+            <div class="flex space-x-4">
+               <a href="https://play.google.com/store/apps/details?id=com.tutorialspoint.onlineviewer" target="_blank"
+                  rel="nofollow">
+                  <img src="https://www.tutorialspoint.com/static/images/googleplay.svg" alt="Download Android App" loading="lazy" class="h-10">
+               </a>
+               <a href="https://itunes.apple.com/us/app/tutorials-point/id914891263?ls=1&mt=8" target="_blank" rel="nofollow">
+                  <img src="https://www.tutorialspoint.com/static/images/appstore.svg" alt="Download IOS App" loading="lazy" class="h-10">
+               </a>
+            </div>
+         </div>
+         <div class="pt-6 pb-8 text-center border-t border-gray-700">
+            <p class="text-gray-300 max-w-5xl mx-auto mb-2">
+               Tutorials Point is a leading Ed Tech company striving to provide the best learning material on technical
+               and non-technical subjects.
+            </p>
+            <p class="text-gray-300 mt-8 text-sm">© Copyright 2025. All Rights Reserved.</p>
+         </div>
+      </div>
+</footer>
+<script src="/static/js/new-lib-script.js?mv10.55"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+if(getCookie('auid') == '' || getCookie('auid') == null){
+   window.onload = function() {
+        initializeGoogleOneTap();
+   };
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX9ZP4VY84"></script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-EX9ZP4VY84');
+</script>
+<!-- New Facebook Pixel Code -->
+<script>
+   !function(f,b,e,v,n,t,s)
+   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+   n.queue=[];t=b.createElement(e);t.async=!0;
+   t.src=v;s=b.getElementsByTagName(e)[0];
+   s.parentNode.insertBefore(t,s)}(window,document,'script',
+   'https://connect.facebook.net/en_US/fbevents.js');
+   fbq('init', '854536859149047');
+   fbq('track', 'PageView');
+</script>
+ <!-- End facebook Pixel Code -->
+</body>
+</html>

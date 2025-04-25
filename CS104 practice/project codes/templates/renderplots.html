@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logfile analyser</title>
+</head>
+<body style="background-color: black; color: yellow;">
+    <h1>LOGFILE ANALYSIS CREATOR</h1>
+    <nav style="background-color: gray; text-align: left; justify-content: space-between;">
+        <a style="color: white; text-decoration: none;" href='/'>Upload</a>
+        <a style="color: white; text-decoration: none;" href='/viewcsv'>CSV</a>
+        <a style="color: white; text-decoration: none;" href="/viewplot">Plots</a>
+    </nav>
+    <br><br>
+    <img src="{{ url_for('static', filename='plots/levelstate.png') }}" alt="Level state distribution">
+    <form method="GET">
+        <button type="submit" name="submit" value="levelstatepdf">Download pdf</button>
+        <button type="submit" name="submit" value="levelstatepng">Download png</button>
+    </form>
+    <img src="{{ url_for('static', filename='plots/eventcode.png') }}" alt="Event code distribution">
+    <form method="GET">
+        <button type="submit" name="submit" value="eventcodepdf">Download pdf</button>
+        <button type="submit" name="submit" value="eventcodepng">Download png</button>
+    </form>
+    <img src="{{ url_for('static', filename='plots/eventtime.png') }}" alt="Events with time">
+    <form method="GET">
+        <button type="submit" name="submit" value="eventtimepdf">Download pdf</button>
+        <button type="submit" name="submit" value="eventtimepng">Download png</button>
+    </form>
+</body>
+</html>
