@@ -18,7 +18,7 @@ def b(spicepoints, centers, labels):
     redata=spicepoints.reshape(spicepoints.shape[0],1,2)
     recenters=centers.reshape(1,centers.shape[0],2)
     distann=np.linalg.norm(redata-recenters, axis=2)
-    newlabels=np.argsort(distann, axis=1)[:,1] #really imp method
+    newlabels=np.argsort(distann, axis=1)[:,1] #really imp method...getting index of second smallest element for each row
     dist=dists(spicepoints)
     mask=(labels==newlabels[:,None])
     count=np.sum(mask, axis=1)-1
